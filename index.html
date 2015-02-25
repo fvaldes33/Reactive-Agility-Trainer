@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
+	<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<link href="css/foundation/css/foundation.min.css" rel="stylesheet">
+	<link href="css/foundation/css/normalize.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<script src="css/foundation/js/vendor/fastclick.js"></script>
+	<script src="css/foundation/js/vendor/modernizr.js"></script>
+	
+  	<title>Reactive Agility Trainer</title>
+</head>
+<body>
+
+<script id="top-bar-tpl" type="text/x-handlebars-template">
+
+			<nav class="tab-bar"> 
+				<section class="left-small"> 
+					<a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a> 
+				</section> 
+				<section class="middle tab-bar-section"> 
+					<h1 class="title">Reactive Agility Trainer</h1> 
+				</section> 
+				<section class="right-small"> 
+					<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a> 
+				</section> 
+			</nav> 
+			<aside class="left-off-canvas-menu"> 
+				<ul class="off-canvas-list"> 
+					<li><label>Menu</label></li> 
+					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="#SETTINGS"><i class="fa fa-cog"></i> Configuration</a></li> 
+					<li><a href="#"><i class="fa fa-floppy-o"></i> Saved Sequences</a></li> 
+					<li><a href="#"><i class="fa fa-plus"></i> Create New Sequence</a></li> 
+					<li><a href="#"><i class="fa fa-info"></i> About R.A.T.</a></li> 
+				</ul> 
+			</aside> 
+			<aside class="right-off-canvas-menu"> 
+				<ul class="off-canvas-list"> 
+					<li><label>Users</label></li> 
+					<li><a href="#">Hari Seldon</a></li> 
+					<li><a href="#">...</a></li> 
+				</ul> 
+			</aside> 
+			<a class="exit-off-canvas"></a>
+</script>
+
+<script id="home-section-tpl" type="text/x-handlebars-template">
+			<section class="main-section"> <!-- content goes here --> 
+				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns text-center">
+						<p>App description</p>
+					</div>
+				</div>
+				
+				<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns text-center">
+						<a href="#" class="button expand">Get Started!</a>
+					</div>
+				</div>
+				
+			</section>	
+</script>
+
+<script id="settings-section-tpl" type="text/x-handlebars-template">
+	<section class="main-section"> <!-- content goes here --> 
+		<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+			<h2 class="title">Settings</h2>
+		</div>
+	</section>
+</script>
+
+
+<!-- Phone Gap Script -->
+<script src="phonegap.js"></script>
+
+<!-- Handlebars.js -->
+<script src="lib/handlebars.js"></script>
+<script src="js/storage/memory-store.js"></script>
+
+<!--Foundation Scripts-->
+<script src="css/foundation/js/vendor/jquery.js"></script>
+<script src="css/foundation/js/foundation.min.js"></script>
+
+<script src="js/HomeView.js"></script>
+<script src="js/SettingsView.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    $(document).foundation();
+</script>
+
+</body>
+</html>

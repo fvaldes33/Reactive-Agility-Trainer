@@ -1,0 +1,14 @@
+body, section, h1,h2,h3,h4,h5,h6,p,span,i {
+	color: #ffffff;
+}
+
+.inner-wrap {
+	background-image: url(../images/Agility.png);
+	background-size: cover;
+	height: 100vh;
+}
+
+#btn-row {
+	position: fixed;
+	top: 85vh;
+}
