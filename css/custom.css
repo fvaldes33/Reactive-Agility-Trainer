@@ -2,6 +2,12 @@ body, section, h1,h2,h3,h4,h5,h6,p,span,i {
 	color: #ffffff;
 }
 
+body {
+	background: #333333;
+	//position: fixed;
+	top: 20px;
+}
+
 .inner-wrap {
 	background-image: url(../images/Agility.png);
 	background-size: cover;
