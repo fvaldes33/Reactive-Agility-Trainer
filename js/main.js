@@ -75,6 +75,9 @@ var app = {
 			this.startsequence();
 		} else if( action == 'sequence' ){
 			$('#counter').html("Done");
+			setTimeout(function(){
+				location.hash = "#STARTER";
+			}, 1500);
 		}
 	},
 
@@ -83,14 +86,33 @@ var app = {
 		var seq = JSON.parse(window.localStorage.getItem("chosenpreset"));
 		console.log( seq );
 
-		var total_time = seq.preset_total_time;
+		var total_time = Number(seq.preset_total_time) + Number(seq.preset_image_time);
+		var image_time = seq.preset_image_time;
+		var down_time = seq.preset_down_time;
+		var image_time_keep = 1;
+		var show = true;
 
 		this.s = setInterval(function(){
-			if( total_time > 0 ) {
-				var shownext = self.makeUniqueRandom(seq.preset_shapes.length);
-				console.log( seq.preset_shapes[shownext] );
-				$('#counter').html(seq.preset_shapes[shownext]);
+			if( total_time >	 0 ) {
+
+				if( image_time_keep == 1 ) {
+					show = true;
+				} else if ( image_time_keep == image_time ){
+					show = false;
+					image_time_keep = 0;
+				} else {
+					show = false;
+				}
+
+				if( show ) {
+					var shownext = self.makeUniqueRandom(seq.preset_shapes.length);
+					console.log( seq.preset_shapes[shownext] );
+					$('#counter').html(self.shapeme(seq.preset_shapes[shownext]));
+				}
+
 				total_time--;
+				image_time_keep++;
+				console.log( "Total Time: " + total_time )
 			} else {
 				self.stopcountdown(self.s, 'sequence');
 			}
@@ -111,6 +133,29 @@ var app = {
     this.uniqueRandoms.splice(index, 1);
 
     return val;
+
+	},
+
+	shapeme: function(str) {
+
+		var result;
+
+		switch(str){
+			case "Square":
+				result = '<i class="fa fa-square fa-5x"></i>';
+				break;
+			case "Triangle":
+				result = '<i class="fa fa-exclamation-triangle fa-5x"></i>';
+				break;
+			case "Circle":
+				result = '<i class="fa fa-circle fa-5x"></i>';
+				break;
+			case "Star":
+				result = '<i class="fa fa-star fa-5x"></i>';
+				break;
+		}
+
+		return result;
 
 	},
 
@@ -138,8 +183,9 @@ Handlebars.registerHelper("formatMinutes", function(mytime) {
 
 	if( mytime > 60 ) {
 		result = mytime / 60;
+		result = result + " min";
 	} else {
-		result = mytime;
+		result = mytime + " sec";
 	}
   	return result;
 });

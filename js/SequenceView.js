@@ -3,8 +3,8 @@ var SequenceView = function() {
 	this.renderPage = function(){
 
 		this.el.append( this.inner );
-		this.inner.html(SequenceView.toptemplate());
-		this.inner.append( SequenceView.sectiontemplate() );
+		//this.inner.html(SequenceView.toptemplate());
+		this.inner.html( SequenceView.sectiontemplate() );
 
 		return this;
 	};
