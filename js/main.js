@@ -11,11 +11,6 @@ var app = {
 				$(event.target).removeClass('tappable-active');
 			});
 
-			$(window).on('touchend', '#sequencer', function(event){
-				self.stopcountdown(self.s, 'sequence');
-			});
-
-
 			$(window).on('hashchange', $.proxy(this.route, this));
 
 		} else {
@@ -26,9 +21,7 @@ var app = {
 			$('body').on('mouseup', 'a', function(event) {
 				$(event.target).removeClass('tappable-active');
 			});
-			$('body').on('mouseup', '#sequencer', function(){
-				self.stopcountdown(self.s, 'sequence');
-			});
+
 			$(window).on('hashchange', $.proxy(this.route, this));
 		}
 
