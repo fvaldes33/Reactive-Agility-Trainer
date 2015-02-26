@@ -10,7 +10,7 @@
 	<link href="css/foundation/css/foundation.min.css" rel="stylesheet">
 	<link href="css/foundation/css/normalize.css" rel="stylesheet">
 	<link href="css/custom.css" rel="stylesheet">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
 	<script src="css/foundation/js/vendor/fastclick.js"></script>
 	<script src="css/foundation/js/vendor/modernizr.js"></script>
@@ -35,7 +35,7 @@
 			<aside class="left-off-canvas-menu"> 
 				<ul class="off-canvas-list"> 
 					<li><label>Menu</label></li> 
-					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="#HOME"><i class="fa fa-home"></i> Home</a></li>
 					<li><a href="#SETTINGS"><i class="fa fa-cog"></i> Configuration</a></li> 
 					<li><a href="#"><i class="fa fa-floppy-o"></i> Saved Sequences</a></li> 
 					<li><a href="#"><i class="fa fa-plus"></i> Create New Sequence</a></li> 
@@ -94,19 +94,26 @@
 		</div>
 		<div class="row setting-holder" style="padding-top: 10px; padding-bottom: 10px;">
 		</div>
+		
+		<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+			<div class="small-12 columns text-center">
+				<a href="#STARTER" class="button expand">Start Sequence!</a>
+			</div>
+		</div>
+		
 </script>
 
 <script id="starter-setting-tpl" type="text/x-handlebars-template">
 			{{#.}}
 				<div class="small-12 columns">
-					<div class="callout panel">
+					<div class="callout panel" style="background: rgba( 255,255,255,0.75 );">
 						<div class="row collapse">
 							<div class="small-12 columns">
 								<p>Sequence Settings</p>
 								<hr />
 							</div>
 						</div>
-						<div class="row collapse">
+						<div class="row collapse" style="padding-bottom: 10px;">
 							<div class="small-4 columns text-center">
 								<small>Total Time</small><br />
 								{{formatMinutes this.preset_total_time}} min
@@ -120,10 +127,17 @@
 								{{formatMinutes this.preset_down_time}} sec
 							</div>
 						</div>
+						<div class="row collapse" style="padding-bottom: 10px;">
+							<div class="small-12 columns">
+								<p>Shapes</p>
+								<hr />
+							</div>
+							{{formatshapes this.preset_shapes}}
+						</div>
 					</div>
 				</div>
 			{{/.}}
-		</div>
+		
 	</section>
 </script>
 

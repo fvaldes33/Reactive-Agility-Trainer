@@ -1,9 +1,17 @@
-body, section, h1,h2,h3,h4,h5,h6,p,span,i {
+body,section, h1,h2,h3,h4,h5,h6,p,span,i {
 	color: #ffffff;
 }
 
-select, input {
+select, input, .panel.callout i {
 	color: #000;
+}
+
+.setting-holder hr {
+	margin: 5px;
+}
+
+.setting-holder p {
+	margin-bottom: 0px;
 }
 
 body {
@@ -20,4 +28,8 @@ body {
 #btn-row {
 	position: fixed;
 	top: 85vh;
+}
+
+.callout {
+	background: rgba( 255,255,255,0.75 );
 }

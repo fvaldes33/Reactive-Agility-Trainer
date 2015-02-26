@@ -10,7 +10,10 @@ var app = {
 			$('body').on('touchend', 'a', function(event) {
 				$(event.target).removeClass('tappable-active');
 			});
-
+			$('body').on('touchend', '.menu-icon', function(event) {
+				event.preventDefault();
+			});
+			
 			$(window).on('hashchange', $.proxy(this.route, this));
 
 		} else {
@@ -20,6 +23,9 @@ var app = {
 			});
 			$('body').on('mouseup', 'a', function(event) {
 				$(event.target).removeClass('tappable-active');
+			});
+			$('body').on('click', '.menu-icon', function(event) {
+				
 			});
 			
 			$(window).on('hashchange', $.proxy(this.route, this));
@@ -32,8 +38,10 @@ var app = {
 		var hash = window.location.hash;
 		
 		if (!hash) {
+			$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
+			//$('body').html(new HomeView().renderPage().el);
+		} else if ( hash == "#HOME" ) { 
 			$('body').html(new HomeView().renderPage().el);
-			
 		} else if ( hash == "#SETTINGS" ) { 
 			$('body').html(new SettingsView().renderPage().el);
 		} else if ( hash == "#STARTER" ) { 
@@ -44,6 +52,8 @@ var app = {
 	
 	initialize: function() {
 		var self = this;
+		
+		location.hash = "#HOME";
 		
 		this.registerEvents();
 		
@@ -66,4 +76,35 @@ Handlebars.registerHelper("formatMinutes", function(mytime) {
 		result = mytime;
 	}
   	return result;
+});
+
+Handlebars.registerHelper("formatshapes", function(shapes, options) {
+	
+	var d = '';
+	var o = '';
+	
+	for( var i = 0; i < shapes.length; i++ ) {
+	
+		switch(shapes[i]) {
+			case "Square": 
+				d = d + '<div class="small-4 columns text-center end"><i class="fa fa-square"></i></div>';
+				//o = '<i class="fa fa-square"></i>'; 
+				break;
+			case "Circle": 
+				d = d + '<div class="small-4 columns text-center end"><i class="fa fa-circle"></i></div>';
+				//o = '<i class="fa fa-circle"></i>'; 
+				break;
+			case "Triangle": 
+				d = d + '<div class="small-4 columns text-center end"><i class="fa fa-exclamation-triangle"></i></div>';
+				//o = '<i class="fa fa-exclamation-triangle"></i>'; 
+				break;
+			case "Star": 
+				d = d + '<div class="small-4 columns text-center end"><i class="fa fa-star"></i></div>';
+				//o = '<i class="fa fa-star"></i>'; 
+				break;
+		}
+
+	}
+	
+	return new Handlebars.SafeString(d);
 });
