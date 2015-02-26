@@ -1,5 +1,13 @@
 var app = {
-
+	
+	showAlert: function (message, title) {
+		if (navigator.notification) {
+			navigator.notification.alert(message, null, title, 'OK');
+		} else {
+			alert(title ? (title + ": " + message) : message);
+		}
+	},
+	
 	registerEvents: function() {
 		var self = this;
 		if (document.documentElement.hasOwnProperty('ontouchstart')) {
@@ -10,7 +18,10 @@ var app = {
 			$('body').on('touchend', 'a', function(event) {
 				$(event.target).removeClass('tappable-active');
 			});
-
+			$('body').on('touchend', '#sequencer', function(event) {
+				self.showAlert("Tapped", "RAT");
+			});
+			
 			$(window).on('hashchange', $.proxy(this.route, this));
 
 		} else {
@@ -20,6 +31,9 @@ var app = {
 			});
 			$('body').on('mouseup', 'a', function(event) {
 				$(event.target).removeClass('tappable-active');
+			});
+			$('body').on('mouseup', '#sequencer', function(event) {
+				console.log("Tapppppped");
 			});
 
 			$(window).on('hashchange', $.proxy(this.route, this));
