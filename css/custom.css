@@ -16,6 +16,7 @@ select, input, .panel.callout i {
 
 body {
 	background: #333333;
+	overflow: hidden;
 	//top: 20px;
 }
 
@@ -30,6 +31,8 @@ body {
 	top: 85vh;
 }
 
-.callout {
+.callout.panel {
 	background: rgba( 255,255,255,0.75 );
+	max-height: 80vh;
+	overflow-y: scroll;
 }

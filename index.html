@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	
+
 	<meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-	
+
 	<link href="css/foundation/css/foundation.min.css" rel="stylesheet">
 	<link href="css/foundation/css/normalize.css" rel="stylesheet">
 	<link href="css/custom.css" rel="stylesheet">
@@ -14,63 +14,63 @@
 
 	<script src="css/foundation/js/vendor/fastclick.js"></script>
 	<script src="css/foundation/js/vendor/modernizr.js"></script>
-	
+
   	<title>Reactive Agility Trainer</title>
 </head>
 <body>
 
 <script id="top-bar-tpl" type="text/x-handlebars-template">
 
-			<nav class="tab-bar"> 
-				<section class="left-small"> 
-					<a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a> 
-				</section> 
-				<section class="middle tab-bar-section"> 
-					<h1 class="title">Reactive Agility Trainer</h1> 
-				</section> 
-				<section class="right-small"> 
-					<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a> 
-				</section> 
-			</nav> 
-			<aside class="left-off-canvas-menu"> 
-				<ul class="off-canvas-list"> 
-					<li><label>Menu</label></li> 
+			<nav class="tab-bar">
+				<section class="left-small">
+					<a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+				</section>
+				<section class="middle tab-bar-section">
+					<h1 class="title">Reactive Agility Trainer</h1>
+				</section>
+				<section class="right-small">
+					<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+				</section>
+			</nav>
+			<aside class="left-off-canvas-menu">
+				<ul class="off-canvas-list">
+					<li><label>Menu</label></li>
 					<li><a href="#HOME"><i class="fa fa-home"></i> Home</a></li>
-					<li><a href="#SETTINGS"><i class="fa fa-cog"></i> Configuration</a></li> 
-					<li><a href="#"><i class="fa fa-floppy-o"></i> Saved Sequences</a></li> 
-					<li><a href="#"><i class="fa fa-plus"></i> Create New Sequence</a></li> 
-					<li><a href="#"><i class="fa fa-info"></i> About R.A.T.</a></li> 
-				</ul> 
-			</aside> 
-			<aside class="right-off-canvas-menu"> 
-				<ul class="off-canvas-list"> 
-					<li><label>Users</label></li> 
-					<li><a href="#">Hari Seldon</a></li> 
-					<li><a href="#">...</a></li> 
-				</ul> 
-			</aside> 
+					<li><a href="#SETTINGS"><i class="fa fa-cog"></i> Configuration</a></li>
+					<li><a href="#"><i class="fa fa-floppy-o"></i> Saved Sequences</a></li>
+					<li><a href="#"><i class="fa fa-plus"></i> Create New Sequence</a></li>
+					<li><a href="#ABOUT"><i class="fa fa-info"></i> About R.A.T.</a></li>
+				</ul>
+			</aside>
+			<aside class="right-off-canvas-menu">
+				<ul class="off-canvas-list">
+					<li><label>Users</label></li>
+					<li><a href="#">Hari Seldon</a></li>
+					<li><a href="#">...</a></li>
+				</ul>
+			</aside>
 			<a class="exit-off-canvas"></a>
 </script>
 
 <script id="home-section-tpl" type="text/x-handlebars-template">
-			<section class="main-section"> <!-- content goes here --> 
+			<section class="main-section"> <!-- content goes here -->
 				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-12 columns text-center">
 						<p>App description</p>
 					</div>
 				</div>
-				
+
 				<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-12 columns text-center">
 						<a href="#STARTER" class="button expand">Get Started!</a>
 					</div>
 				</div>
-				
-			</section>	
+
+			</section>
 </script>
 
 <script id="settings-section-tpl" type="text/x-handlebars-template">
-	<section class="main-section"> <!-- content goes here --> 
+	<section class="main-section"> <!-- content goes here -->
 		<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
 			<h2 class="title">Settings</h2>
 		</div>
@@ -78,7 +78,7 @@
 </script>
 
 <script id="starter-section-tpl" type="text/x-handlebars-template">
-	<section class="main-section"> <!-- content goes here --> 
+	<section class="main-section"> <!-- content goes here -->
 		<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
 			<div class="small-6 columns">
 				<h4 class="">Select Sequence:</h4>
@@ -94,13 +94,13 @@
 		</div>
 		<div class="row setting-holder" style="padding-top: 10px; padding-bottom: 10px;">
 		</div>
-		
+
 		<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
 			<div class="small-12 columns text-center">
 				<a href="#STARTER" class="button expand">Start Sequence!</a>
 			</div>
 		</div>
-		
+
 </script>
 
 <script id="starter-setting-tpl" type="text/x-handlebars-template">
@@ -137,10 +137,47 @@
 					</div>
 				</div>
 			{{/.}}
-		
+
 	</section>
 </script>
 
+<script id="about-section-tpl" type="text/x-handlebars-template">
+	<section class="main-section"> <!-- content goes here -->
+		<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+			<div class="small-12 columns">
+				<div class="callout panel">
+					<div class="row">
+						<div class="small-12 columns text-center">
+							<p>About</p>
+							<hr />
+						</div>
+					</div>
+					<div class="row">
+						<div class="small-12 columns">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+								veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+								ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+								velit esse cillum dolore eu fugiat nulla pariatur.
+
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+									veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+									ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+									velit esse cillum dolore eu fugiat nulla pariatur.
+
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+										veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+										ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+										velit esse cillum dolore eu fugiat nulla pariatur.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</script>
 
 <!-- Phone Gap Script -->
 <script src="phonegap.js"></script>
@@ -154,6 +191,7 @@
 <script src="css/foundation/js/foundation.min.js"></script>
 
 <script src="js/HomeView.js"></script>
+<script src="js/AboutView.js"></script>
 <script src="js/SettingsView.js"></script>
 <script src="js/StarterView.js"></script>
 <script src="js/main.js"></script>
