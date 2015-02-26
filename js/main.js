@@ -11,10 +11,12 @@ var app = {
 				$(event.target).removeClass('tappable-active');
 			});
 
+			/*
 			$('body').on('touchend', '#sequencer', function(){
 				self.stopcountdown(self.s, 'sequence', 'Cancelled');
 			});
-
+			*/
+			
 			$(window).on('hashchange', $.proxy(this.route, this));
 
 		} else {
