@@ -41,7 +41,76 @@ var app = {
 			$('body').html(new StarterView(this.store).renderPage().el);
 		} else if ( hash == "#ABOUT" ) {
 			$('body').html(new AboutView(this.store).renderPage().el);
+		} else if ( hash == "#SEQ" ) {
+			$('body').html(new SequenceView(this.store).renderPage().el);
+			this.countdown();
 		}
+
+		this.stopcountdown(this.s, 'all');
+
+	},
+
+	countdown: function(){
+		console.log("Countdown Initiated");
+
+		var self = this;
+		var s = 5;
+		var cd = setInterval( function(){
+			if( s > 0 ) {
+				$('#counter').html(s);
+				s--;
+			} else {
+				self.stopcountdown(cd, 'countdown');
+			}
+		}, 1000);
+
+	},
+
+	stopcountdown: function(interval, action) {
+		console.log("Countdown Stopped");
+		clearInterval(interval);
+
+		if( action == 'countdown' ) {
+			$('#counter').html("Go!");
+			this.startsequence();
+		} else if( action == 'sequence' ){
+			$('#counter').html("Done");
+		}
+	},
+
+	startsequence: function(){
+		var self = this;
+		var seq = JSON.parse(window.localStorage.getItem("chosenpreset"));
+		console.log( seq );
+
+		var total_time = seq.preset_total_time;
+
+		this.s = setInterval(function(){
+			if( total_time > 0 ) {
+				var shownext = self.makeUniqueRandom(seq.preset_shapes.length);
+				console.log( seq.preset_shapes[shownext] );
+				$('#counter').html(seq.preset_shapes[shownext]);
+				total_time--;
+			} else {
+				self.stopcountdown(self.s, 'sequence');
+			}
+		}, 1000);
+
+	},
+
+	makeUniqueRandom: function(numRandoms){
+		if (!this.uniqueRandoms.length) {
+        for (var i = 0; i < numRandoms; i++) {
+            this.uniqueRandoms.push(i);
+        }
+    }
+    var index = Math.floor(Math.random() * this.uniqueRandoms.length);
+    var val = this.uniqueRandoms[index];
+
+    // now remove that value from the array
+    this.uniqueRandoms.splice(index, 1);
+
+    return val;
 
 	},
 
@@ -51,6 +120,8 @@ var app = {
 		location.hash = "#HOME";
 
 		this.registerEvents();
+		this.s = '';
+		this.uniqueRandoms = [];
 
 		this.store = new LocalStorageStore(function() {
 			self.route();

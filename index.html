@@ -36,9 +36,9 @@
 				<ul class="off-canvas-list">
 					<li><label>Menu</label></li>
 					<li><a href="#HOME"><i class="fa fa-home"></i> Home</a></li>
-					<li><a href="#SETTINGS"><i class="fa fa-cog"></i> Configuration</a></li>
-					<li><a href="#"><i class="fa fa-floppy-o"></i> Saved Sequences</a></li>
 					<li><a href="#"><i class="fa fa-plus"></i> Create New Sequence</a></li>
+					<li><a href="#"><i class="fa fa-floppy-o"></i> Saved Sequences</a></li>
+					<li><a href="#SETTINGS"><i class="fa fa-cog"></i> Configuration</a></li>
 					<li><a href="#ABOUT"><i class="fa fa-info"></i> About R.A.T.</a></li>
 				</ul>
 			</aside>
@@ -95,9 +95,9 @@
 		<div class="row setting-holder" style="padding-top: 10px; padding-bottom: 10px;">
 		</div>
 
-		<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+		<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px; display: none;">
 			<div class="small-12 columns text-center">
-				<a href="#STARTER" class="button expand">Start Sequence!</a>
+				<a href="#SEQ" class="button expand">Start Sequence!</a>
 			</div>
 		</div>
 
@@ -179,6 +179,16 @@
 	</section>
 </script>
 
+<script id="sequence-section-tpl" type="text/x-handlebars-template">
+	<section class="main-section"> <!-- content goes here -->
+		<div class="table-view">
+			<div class="table-cell">
+				<h1 id="counter">Ready!</h1>
+			</div>
+		</div>
+	</section>
+</script>
+
 <!-- Phone Gap Script -->
 <script src="phonegap.js"></script>
 
@@ -190,6 +200,7 @@
 <script src="css/foundation/js/vendor/jquery.js"></script>
 <script src="css/foundation/js/foundation.min.js"></script>
 
+<script src="js/SequenceView.js"></script>
 <script src="js/HomeView.js"></script>
 <script src="js/AboutView.js"></script>
 <script src="js/SettingsView.js"></script>
