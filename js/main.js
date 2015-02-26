@@ -12,8 +12,9 @@ var app = {
 			});
 
 			$('body').on('touchend', '#sequencer', function(){
-				self.stopcountdown(self.s, 'sequence');
+				self.stopcountdown(self.s, 'sequence', 'Cancelled');
 			});
+
 			$(window).on('hashchange', $.proxy(this.route, this));
 
 		} else {
@@ -85,7 +86,7 @@ var app = {
 			} else {
 				$('#counter').html("Done");
 			}
-			
+
 			setTimeout(function(){
 				location.hash = "#STARTER";
 			}, 1500);
