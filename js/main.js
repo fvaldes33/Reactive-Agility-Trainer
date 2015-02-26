@@ -11,7 +11,7 @@ var app = {
 				$(event.target).removeClass('tappable-active');
 			});
 
-			$('body').on('touchend', '#sequencer', function(){
+			$('body').on('touchend', '#sequencer', function(event){
 				self.stopcountdown(self.s, 'sequence');
 			});
 
