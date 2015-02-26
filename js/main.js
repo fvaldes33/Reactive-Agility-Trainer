@@ -10,9 +10,6 @@ var app = {
 			$('body').on('touchend', 'a', function(event) {
 				$(event.target).removeClass('tappable-active');
 			});
-			$('body').on('touchend', '.menu-icon', function(event) {
-				event.preventDefault();
-			});
 			
 			$(window).on('hashchange', $.proxy(this.route, this));
 
@@ -23,9 +20,6 @@ var app = {
 			});
 			$('body').on('mouseup', 'a', function(event) {
 				$(event.target).removeClass('tappable-active');
-			});
-			$('body').on('click', '.menu-icon', function(event) {
-				
 			});
 			
 			$(window).on('hashchange', $.proxy(this.route, this));
@@ -39,7 +33,6 @@ var app = {
 		
 		if (!hash) {
 			$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
-			//$('body').html(new HomeView().renderPage().el);
 		} else if ( hash == "#HOME" ) { 
 			$('body').html(new HomeView().renderPage().el);
 		} else if ( hash == "#SETTINGS" ) { 
