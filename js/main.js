@@ -11,6 +11,9 @@ var app = {
 				$(event.target).removeClass('tappable-active');
 			});
 
+			$('body').on('touchend', '#sequencer', function(){
+				self.stopcountdown(self.s, 'sequence');
+			});
 			$(window).on('hashchange', $.proxy(this.route, this));
 
 		} else {
@@ -21,7 +24,9 @@ var app = {
 			$('body').on('mouseup', 'a', function(event) {
 				$(event.target).removeClass('tappable-active');
 			});
-
+			$('body').on('mouseup', '#sequencer', function(){
+				self.stopcountdown(self.s, 'sequence', 'Cancelled');
+			});
 			$(window).on('hashchange', $.proxy(this.route, this));
 		}
 
@@ -66,7 +71,7 @@ var app = {
 
 	},
 
-	stopcountdown: function(interval, action) {
+	stopcountdown: function( interval, action, message = null ) {
 		console.log("Countdown Stopped");
 		clearInterval(interval);
 
@@ -74,7 +79,13 @@ var app = {
 			$('#counter').html("Go!");
 			this.startsequence();
 		} else if( action == 'sequence' ){
-			$('#counter').html("Done");
+
+			if( message ){
+				$('#counter').html(message);
+			} else {
+				$('#counter').html("Done");
+			}
+			
 			setTimeout(function(){
 				location.hash = "#STARTER";
 			}, 1500);
