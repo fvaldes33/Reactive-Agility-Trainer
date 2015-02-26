@@ -62,7 +62,7 @@
 				
 				<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-12 columns text-center">
-						<a href="#" class="button expand">Get Started!</a>
+						<a href="#STARTER" class="button expand">Get Started!</a>
 					</div>
 				</div>
 				
@@ -77,13 +77,63 @@
 	</section>
 </script>
 
+<script id="starter-section-tpl" type="text/x-handlebars-template">
+	<section class="main-section"> <!-- content goes here --> 
+		<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+			<div class="small-6 columns">
+				<h4 class="">Select Sequence:</h4>
+			</div>
+			<div class="small-6 columns">
+				<select id="sequence_chosen">
+						<option value="1">Select One</option>
+					{{#.}}
+						<option value="{{this.id}}">{{this.preset_name}}</option>
+					{{/.}}
+				</select>
+			</div>
+		</div>
+		<div class="row setting-holder" style="padding-top: 10px; padding-bottom: 10px;">
+		</div>
+</script>
+
+<script id="starter-setting-tpl" type="text/x-handlebars-template">
+			{{#.}}
+				<div class="small-12 columns">
+					<div class="callout panel">
+						<div class="row collapse">
+							<div class="small-12 columns">
+								<p>Sequence Settings</p>
+								<hr />
+							</div>
+						</div>
+						<div class="row collapse">
+							<div class="small-4 columns text-center">
+								<small>Total Time</small><br />
+								{{formatMinutes this.preset_total_time}} min
+							</div>
+							<div class="small-4 columns text-center">
+								<small>Image Time</small><br />
+								{{formatMinutes this.preset_image_time}} sec
+							</div>
+							<div class="small-4 columns text-center">
+								<small>Down Time</small><br />
+								{{formatMinutes this.preset_down_time}} sec
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/.}}
+		</div>
+	</section>
+</script>
+
 
 <!-- Phone Gap Script -->
 <script src="phonegap.js"></script>
 
 <!-- Handlebars.js -->
 <script src="lib/handlebars.js"></script>
-<script src="js/storage/memory-store.js"></script>
+<script src="js/storage/ls-store.js"></script>
 
 <!--Foundation Scripts-->
 <script src="css/foundation/js/vendor/jquery.js"></script>
@@ -91,6 +141,7 @@
 
 <script src="js/HomeView.js"></script>
 <script src="js/SettingsView.js"></script>
+<script src="js/StarterView.js"></script>
 <script src="js/main.js"></script>
 
 <script>

@@ -36,6 +36,8 @@ var app = {
 			
 		} else if ( hash == "#SETTINGS" ) { 
 			$('body').html(new SettingsView().renderPage().el);
+		} else if ( hash == "#STARTER" ) { 
+			$('body').html(new StarterView(this.store).renderPage().el);
 		}
 		
 	},
@@ -44,11 +46,24 @@ var app = {
 		var self = this;
 		
 		this.registerEvents();
-		this.route();
-		//$('body').html(new HomeView().renderPage().el);
+		
+		this.store = new LocalStorageStore(function() {
+			self.route();
+		});
 		
     }
 
 };
 
 app.initialize();
+
+Handlebars.registerHelper("formatMinutes", function(mytime) {
+	var result;
+	
+	if( mytime > 60 ) {
+		result = mytime / 60;
+	} else {
+		result = mytime;
+	}
+  	return result;
+});
