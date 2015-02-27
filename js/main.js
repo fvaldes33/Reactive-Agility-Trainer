@@ -1,5 +1,9 @@
 var app = {
 	
+	slidePage: function(page) {
+
+	},
+	
 	showAlert: function (message, title) {
 		if (navigator.notification) {
 			navigator.notification.alert(message, null, title, 'OK');
@@ -34,7 +38,7 @@ var app = {
 	route: function() {
 		var self = this;
 		var hash = window.location.hash;
-
+		
 		if (!hash) {
 			$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
 		} else if ( hash == "#HOME" ) {
@@ -51,7 +55,7 @@ var app = {
 		}
 
 		this.stopcountdown(this.s, 'all');
-
+		
 	},
 
 	countdown: function(){
@@ -171,7 +175,7 @@ var app = {
 		this.registerEvents();
 		this.s = '';
 		this.uniqueRandoms = [];
-
+				
 		this.store = new LocalStorageStore(function() {
 			self.route();
 		});
