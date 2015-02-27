@@ -14,7 +14,7 @@ var app = {
 			// ... if yes: register touch event listener to change the "selected" state of the item
 
 			$('body').on('touchend', '#sequencer', function(event) {
-				self.showAlert("Tapped", "RAT");
+				//self.showAlert("Tapped", "RAT");
 			});
 			
 			$(window).on('hashchange', $.proxy(this.route, this));
