@@ -3,12 +3,10 @@ var StarterView = function(store) {
 	this.fillSettings = function(){
 		var self = this;
 
-		store.fillSettings($('#sequence_chosen').val(), function(settings) {
-			console.log(settings);
+		store.fillSettings( $('#sequence_chosen').val() , function(settings) {
+			console.log( $('#sequence_chosen').val() );
 			$('.setting-holder').html( StarterView.settingstemplate(settings) );
 		});
-
-		$('#btn-row').css('display','block');
 
 	};
 
@@ -33,6 +31,7 @@ var StarterView = function(store) {
 		this.inner = $('<div class="inner-wrap" />');
 		this.section = $('<section class="main-section" />');
 		this.inner.on('change', '#sequence_chosen', this.fillSettings);
+
 	};
 
 	this.initialize();

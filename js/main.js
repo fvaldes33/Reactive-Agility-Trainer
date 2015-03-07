@@ -1,9 +1,9 @@
 var app = {
-	
+
 	slidePage: function(page) {
 
 	},
-	
+
 	showAlert: function (message, title) {
 		if (navigator.notification) {
 			navigator.notification.alert(message, null, title, 'OK');
@@ -11,7 +11,7 @@ var app = {
 			alert(title ? (title + ": " + message) : message);
 		}
 	},
-	
+
 	registerEvents: function() {
 		var self = this;
 		if (document.documentElement.hasOwnProperty('ontouchstart')) {
@@ -20,7 +20,7 @@ var app = {
 			$('body').on('touchend', '#sequencer', function(event) {
 				//self.showAlert("Tapped", "RAT");
 			});
-			
+
 			$(window).on('hashchange', $.proxy(this.route, this));
 
 		} else {
@@ -38,24 +38,29 @@ var app = {
 	route: function() {
 		var self = this;
 		var hash = window.location.hash;
-		
+		var page;
+
 		if (!hash) {
+
+		} else if ( hash == "#" ) {
 			$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
 		} else if ( hash == "#HOME" ) {
-			$('body').html(new HomeView().renderPage().el);
+			this.slider.slidePage(new HomeView().renderPage().el);
 		} else if ( hash == "#SETTINGS" ) {
 			$('body').html(new SettingsView().renderPage().el);
 		} else if ( hash == "#STARTER" ) {
-			$('body').html(new StarterView(this.store).renderPage().el);
+			this.slider.slidePage( new StarterView(this.store).renderPage().el );
 		} else if ( hash == "#ABOUT" ) {
-			$('body').html(new AboutView(this.store).renderPage().el);
+			this.slider.slidePage(new AboutView(this.store).renderPage().el);
 		} else if ( hash == "#SEQ" ) {
-			$('body').html(new SequenceView(this.store).renderPage().el);
+			this.slider.slidePage(new SequenceView(this.store).renderPage().el);
 			this.countdown();
 		}
 
 		this.stopcountdown(this.s, 'all');
-		
+
+		//this.slider.slidePage($(page));
+
 	},
 
 	countdown: function(){
@@ -84,6 +89,7 @@ var app = {
 		} else if( action == 'sequence' ){
 			$('#counter').html("Done");
 			setTimeout(function(){
+				window.localStorage.removeItem("chosenpreset");
 				location.hash = "#STARTER";
 			}, 1500);
 		}
@@ -175,7 +181,9 @@ var app = {
 		this.registerEvents();
 		this.s = '';
 		this.uniqueRandoms = [];
-				
+
+		this.slider = new PageSlider($("body"));
+
 		this.store = new LocalStorageStore(function() {
 			self.route();
 		});
@@ -185,6 +193,12 @@ var app = {
 };
 
 app.initialize();
+
+/*
+|*********************
+| * Handlebar Helpers
+|*********************
+**/
 
 Handlebars.registerHelper("formatMinutes", function(mytime) {
 	var result;

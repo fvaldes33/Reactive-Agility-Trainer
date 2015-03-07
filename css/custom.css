@@ -26,7 +26,8 @@ body {
 	height: 100vh;
 }
 
-#btn-row {
+#btn-row,
+#btn-row-seq {
 	position: fixed;
 	top: 85vh;
 }
