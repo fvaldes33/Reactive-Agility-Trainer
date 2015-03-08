@@ -41,9 +41,9 @@ var app = {
 		var page;
 
 		if (!hash) {
-
-		} else if ( hash == "#" ) {
-			$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
+			//this.slider.slidePage(new HomeView().renderPage().el);
+		} else if (hash == "#") {
+			//$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
 		} else if ( hash == "#HOME" ) {
 			this.slider.slidePage(new HomeView().renderPage().el);
 		} else if ( hash == "#SETTINGS" ) {
@@ -193,6 +193,17 @@ var app = {
 };
 
 app.initialize();
+
+$(function(){
+
+	var menuShow = false;
+	$('.right-menu').on('click', function(e){
+		e.preventDefault();
+		console.log(e);
+		$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
+	});
+
+});
 
 /*
 |*********************
