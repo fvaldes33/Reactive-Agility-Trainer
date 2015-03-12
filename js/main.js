@@ -18,11 +18,11 @@ var app = {
 			// ... if yes: register touch event listener to change the "selected" state of the item
 
 			$('body').on('touchstart', 'a', function(event) {
-				$(event.target).parent().addClass(".tapme");
+				$(event.target).parent().addClass("tapme");
 			});
 
 			$('body').on('touchend', 'a', function(event) {
-				$(event.target).parent().removeClass(".tapme");
+				$(event.target).parent().removeClass("tapme");
 			});
 
 			$(window).on('hashchange', $.proxy(this.route, this));
