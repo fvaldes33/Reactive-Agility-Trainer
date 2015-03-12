@@ -1,3 +1,7 @@
+/*
+https://css-tricks.com/examples/ShapesOfCSS/
+*/
+
 #diamond {
   width: 0;
   height: 0;
@@ -14,5 +18,5 @@
   width: 0;
   height: 0;
   border: 25px solid transparent;
-  border-top-color: #fff; 
+  border-top-color: #fff;
 }

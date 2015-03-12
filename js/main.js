@@ -17,17 +17,25 @@ var app = {
 		if (document.documentElement.hasOwnProperty('ontouchstart')) {
 			// ... if yes: register touch event listener to change the "selected" state of the item
 
-			$('body').on('touchend', '#sequencer', function(event) {
-				//self.showAlert("Tapped", "RAT");
+			$('body').on('touchstart', 'a', function(event) {
+				$(event.target).parent().addClass(".tapme");
+			});
+
+			$('body').on('touchend', 'a', function(event) {
+				$(event.target).parent().removeClass(".tapme");
 			});
 
 			$(window).on('hashchange', $.proxy(this.route, this));
 
 		} else {
 			// ... if not: register mouse events instead
+			$('body').on('mousedown', 'a', function(event) {
+				console.log(event.target);
+				$(event.target).parent().addClass("tapme");
+			});
 
-			$('body').on('mouseup', '#sequencer', function(event) {
-				//self.showAlert("Tapped", "RAT");
+			$('body').on('mouseup', 'a', function(event) {
+				$(event.target).parent().removeClass("tapme");
 			});
 
 			$(window).on('hashchange', $.proxy(this.route, this));

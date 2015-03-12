@@ -13,7 +13,7 @@ var ChooseShapeView = function(store) {
         // Define a div wrapper for the view. The div wrapper is used to attach events.
         console.log("ChooseShapeView Initialize Called");
 		this.el = $('<div class="off-canvas-wrap" data-offcanvas />');
-		this.inner = $('<div class="inner-wrap" />');
+		this.inner = $('<div class="inner-wrap black-out" />');
 		this.section = $('<section class="main-section" />');
 
     //this.chosenpreset = JSON.parse(window.localStorage.getItem("chosenpreset"));

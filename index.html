@@ -49,21 +49,50 @@
 
 <script id="home-section-tpl" type="text/x-handlebars-template">
 			<section class="main-section"> <!-- content goes here -->
-				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
-					<div class="small-12 columns text-center">
-						<p>App description</p>
+
+				<div class="row first" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-6 columns text-center">
+						<a href="#STARTER">
+							<div class="icon-box-outter">
+								<div class="icon-box-inner text-center">
+									<i class="fa fa-retweet fa-5x"></i>
+									<p style="margin: 0px;">Quick Start</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="small-6 columns text-center">
+						<a href="#CSV">
+							<div class="icon-box-outter">
+								<div class="icon-box-inner text-center">
+									<i class="fa fa-sliders fa-5x"></i>
+									<p style="margin: 0px;">Create New</p>
+								</div>
+							</div>
+						</a>
 					</div>
 				</div>
 
-				<div id="btn-row-first" class="row collapse" style="padding-top: 10px;">
-					<div class="small-12 columns text-center">
-						<a href="#CSV" class="button expand">Create Sequence</a>
+				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-6 columns text-center">
+						<a href="#ABOUT">
+							<div class="icon-box-outter">
+								<div class="icon-box-inner text-center">
+									<i class="fa fa-info fa-5x"></i>
+									<p style="margin: 0px;">About</p>
+								</div>
+							</div>
+						</a>
 					</div>
-				</div>
-
-				<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
-					<div class="small-12 columns text-center">
-						<a href="#STARTER" class="button expand">Get Started!</a>
+					<div class="small-6 columns text-center">
+						<a href="#">
+							<div class="icon-box-outter">
+								<div class="icon-box-inner text-center">
+									<i class="fa fa-floppy-o fa-5x"></i>
+									<p style="margin: 0px;">Saved</p>
+								</div>
+							</div>
+						</a>
 					</div>
 				</div>
 
@@ -98,7 +127,7 @@
 
 		<div id="btn-row-seq" class="row collapse" style="padding-top: 10px; padding-bottom: 10px; display: block;">
 			<div class="small-12 columns text-center">
-				<a href="#SEQ" class="button expand">Start Sequence!</a>
+				<a href="#SEQ" class="button button-arrow expand round">Start Sequence!</a>
 			</div>
 		</div>
 
@@ -182,7 +211,7 @@
 
 <script id="csv-section-tpl" type="text/x-handlebars-template">
 			<section class="main-section"> <!-- content goes here -->
-				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+				<div class="row collapse" style="padding-top: 10px;">
 					<div class="small-12 columns text-center">
 						<p>Choose Shapes</p>
 					</div>
@@ -215,9 +244,42 @@
 					</div>
 				</div>
 
+				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns text-center">
+						<p>Choose Colors</p>
+					</div>
+				</div>
+
+				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns">
+						<div class="row collapse">
+							<div class="small-3 columns text-center">
+								<div class="box callout panel tight square" data-val="square" data-select="false">
+									<div />
+								</div>
+							</div>
+							<div class="small-3 columns text-center">
+								<div class="box callout panel tight triangle blue" data-val="triangle" data-select="false">
+									<div />
+								</div>
+							</div>
+							<div class="small-3 columns text-center">
+								<div class="box callout panel tight circle green" data-val="circle" data-select="false">
+									<div />
+								</div>
+							</div>
+							<div class="small-3 columns text-center">
+								<div class="box callout panel tight diamond orange" data-val="diamond" data-select="false">
+									<div />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-12 columns text-center">
-						<a href="#STARTER" class="button expand">Get Started!</a>
+						<a href="#CTV" class="button button-arrow expand round">Next Step!</a>
 					</div>
 				</div>
 			</section>
