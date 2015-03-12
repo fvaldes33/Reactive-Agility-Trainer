@@ -1,0 +1,18 @@
+#diamond {
+  width: 0;
+  height: 0;
+  border: 25px solid transparent;
+  border-bottom-color: #fff;
+  position: relative; top: -25px;
+}
+
+#diamond:after {
+  content: '';
+  position: absolute;
+  left: -25px;
+  top: 25px;
+  width: 0;
+  height: 0;
+  border: 25px solid transparent;
+  border-top-color: #fff; 
+}

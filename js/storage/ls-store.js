@@ -20,7 +20,7 @@ var LocalStorageStore = function(successCallback, errorCallback) {
 
 	//Add shit here
 	var presets = [
-		{"id":1, "preset_name":"Default 1", "preset_shapes":["Square","Triangle", "Circle"], "preset_total_time":"30", "preset_image_time":"2", "preset_down_time":"0"},
+		{"id":1, "preset_name":"Default 1", "preset_shapes":["Square","Triangle", "Circle"], "preset_total_time":"30", "preset_image_time":"2", "preset_down_time":"2"},
 		{"id":2, "preset_name":"Default 2", "preset_shapes":["Square","Triangle", "Circle", "Star"], "preset_total_time":"600", "preset_image_time":"3", "preset_down_time":"3"}
 	];
 

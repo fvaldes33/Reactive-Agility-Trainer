@@ -20,7 +20,6 @@
 <body>
 
 <script id="top-bar-tpl" type="text/x-handlebars-template">
-
 			<nav class="tab-bar">
 				<section class="left-small">
 					<a class="" href="#HOME">
@@ -53,6 +52,12 @@
 				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-12 columns text-center">
 						<p>App description</p>
+					</div>
+				</div>
+
+				<div id="btn-row-first" class="row collapse" style="padding-top: 10px;">
+					<div class="small-12 columns text-center">
+						<a href="#CSV" class="button expand">Create Sequence</a>
 					</div>
 				</div>
 
@@ -175,10 +180,54 @@
 	</section>
 </script>
 
+<script id="csv-section-tpl" type="text/x-handlebars-template">
+			<section class="main-section"> <!-- content goes here -->
+				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns text-center">
+						<p>Choose Shapes</p>
+					</div>
+				</div>
+
+				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns">
+						<div class="row collapse">
+							<div class="small-3 columns text-center">
+								<div class="box callout panel tight square" data-val="square" data-select="false">
+									<div />
+								</div>
+							</div>
+							<div class="small-3 columns text-center">
+								<div class="box callout panel tight triangle" data-val="triangle" data-select="false">
+									<div />
+								</div>
+							</div>
+							<div class="small-3 columns text-center">
+								<div class="box callout panel tight circle" data-val="circle" data-select="false">
+									<div />
+								</div>
+							</div>
+							<div class="small-3 columns text-center">
+								<div class="box callout panel tight diamond" data-val="diamond" data-select="false">
+									<div />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns text-center">
+						<a href="#STARTER" class="button expand">Get Started!</a>
+					</div>
+				</div>
+			</section>
+</script>
+
 <script id="sequence-section-tpl" type="text/x-handlebars-template">
 	<section id="sequencer" class="main-section"> <!-- content goes here -->
 		<div class="table-view">
 			<div class="table-cell">
+				<h1 class="show" style="position: absolute; top: 0px; left: 0px; "></h1>
 				<h1 id="counter">Ready!</h1>
 			</div>
 		</div>
@@ -198,6 +247,7 @@
 <script src="css/foundation/js/vendor/jquery.js"></script>
 <script src="css/foundation/js/foundation.min.js"></script>
 
+<script src="js/ChooseShapeView.js"></script>
 <script src="js/SequenceView.js"></script>
 <script src="js/HomeView.js"></script>
 <script src="js/AboutView.js"></script>

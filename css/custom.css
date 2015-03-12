@@ -26,17 +26,77 @@ body {
 	height: 100vh;
 }
 
-#btn-row,
 #btn-row-seq {
 	position: fixed;
 	top: 85vh;
 }
 
-.callout.panel {
+#btn-row,
+#btn-row-first {
+	//position: fixed;
+	//top: 55vh;
+}
+
+.panel.callout {
 	background: rgba( 255,255,255,0.75 );
 	max-height: 80vh;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
+}
+
+.tight{
+	margin: 0px;
+	padding:0px;
+}
+
+.panel.callout.selected {
+    background: #333;
+    color: #fff;
+}
+
+.square div {
+	width: 50px;
+	height: 50px;
+	background: #FFF;
+}
+
+.triangle div {
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 50px solid #fff;
+}
+.star:after {
+	content: "Star";
+}
+
+.diamond div{
+  width: 0;
+  height: 0;
+  border: 25px solid transparent;
+  border-bottom-color: #fff;
+  position: relative; top: -25px;
+}
+
+.diamond div:after {
+  content: '';
+  position: absolute;
+  left: -25px;
+  top: 25px;
+  width: 0;
+  height: 0;
+  border: 25px solid transparent;
+  border-top-color: #fff;
+}
+
+.circle div {
+	width: 50px;
+	height: 50px;
+	background: #fff;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
 }
 
 .table-view {

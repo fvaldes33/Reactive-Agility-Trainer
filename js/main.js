@@ -52,6 +52,8 @@ var app = {
 			this.slider.slidePage( new StarterView(this.store).renderPage().el );
 		} else if ( hash == "#ABOUT" ) {
 			this.slider.slidePage(new AboutView(this.store).renderPage().el);
+		} else if ( hash == "#CSV" ) {
+			this.slider.slidePage(new ChooseShapeView(this.store).renderPage().el);
 		} else if ( hash == "#SEQ" ) {
 			this.slider.slidePage(new SequenceView(this.store).renderPage().el);
 			this.countdown();
@@ -100,37 +102,50 @@ var app = {
 		var seq = JSON.parse(window.localStorage.getItem("chosenpreset"));
 		console.log( seq );
 
-		var total_time = Number(seq.preset_total_time) + Number(seq.preset_image_time);
-		var image_time = seq.preset_image_time;
-		var down_time = seq.preset_down_time;
-		var image_time_keep = 1;
-		var show = true;
+		this.t = '';
+		this.s = 0;
+		this.s_max = seq.preset_total_time;
+		this.i = 0;
+		this.i_max = seq.preset_image_time;
+		this.d = 0;
+		this.d_max = seq.preset_image_time;
+		this.t = null;
+		this.n = 0;
+		this.rest = false;
+		this.shapes = seq.preset_shapes;
 
-		this.s = setInterval(function(){
-			if( total_time >	 0 ) {
+    this.t = setInterval(function(){
+        if( self.s >= self.s_max ){
+           self.stopcountdown( self.t, 'sequence');
+        } else {
+            self.s = self.s + 0.10;
+						self.s = Math.round(self.s * 100) / 100;
 
-				if( image_time_keep == 1 ) {
-					show = true;
-				} else if ( image_time_keep == image_time ){
-					show = false;
-					image_time_keep = 0;
-				} else {
-					show = false;
-				}
+            $('.show').html( self.s );
 
-				if( show ) {
-					var shownext = self.makeUniqueRandom(seq.preset_shapes.length);
-					console.log( seq.preset_shapes[shownext] );
-					$('#counter').html(self.shapeme(seq.preset_shapes[shownext]));
-				}
+            if(!self.rest) {
+							self.i = self.i + 0.10;
+							self.i = Math.round(self.i * 100) / 100;
 
-				total_time--;
-				image_time_keep++;
-				console.log( "Total Time: " + total_time )
-			} else {
-				self.stopcountdown(self.s, 'sequence');
-			}
-		}, 1000);
+                if( self.i < self.i_max ){
+                    $('#counter').html(self.shapes[self.n]);
+                } else if( self.i == self.i_max){
+                    $('#counter').html("REST");
+										self.n = Math.floor((Math.random() * self.shapes.length));
+										self.i = 0;
+										self.rest = true;
+                }
+            } else {
+                if( self.d < self.d_max ){
+										self.d = self.d + 0.10;
+										self.d = Math.round(self.d * 100) / 100;
+                } else if( self.d == self.d_max ) {
+										self.rest = false;
+										self.d = 0;
+                }
+            }
+        }
+    }, 100);
 
 	},
 
@@ -179,7 +194,17 @@ var app = {
 		location.hash = "#HOME";
 
 		this.registerEvents();
-		this.s = '';
+		this.t = '';
+		this.s = 0;
+		this.s_max = 0;
+		this.i = 0;
+		this.i_max = 0;
+		this.d = 0;
+		this.d_max = 0;
+		this.t = null;
+		this.n = 0;
+		this.rest = false;
+
 		this.uniqueRandoms = [];
 
 		this.slider = new PageSlider($("body"));
@@ -202,6 +227,26 @@ $(function(){
 		console.log(e);
 		$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
 	});
+
+	var addme = new Array();
+  var i = 0;
+  $('body').on('mouseup', '.box',function(e){
+    if( $( e.target ).attr('data-select') == "false" ){
+          addme[i] = $( e.target ).attr('data-val');
+          $( e.target ).attr('data-select', "true");
+          $( e.target ).addClass("selected");
+          i++;
+      } else {
+          $( e.target ).attr('data-select', "false");
+          $( e.target ).removeClass("selected");
+          var remove = $( e.target ).attr('data-val');
+          var del = addme.indexOf( remove );
+          $('.delete').html( "Delete " + remove );
+          addme.splice(del, 1);
+          i--;
+      }
+      //display(addme);
+  });
 
 });
 
