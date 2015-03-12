@@ -230,7 +230,7 @@ $(function(){
 
 	var addme = new Array();
   var i = 0;
-  $('body').on('mouseup', '.box',function(e){
+  $('body').on('mouseup touchend', '.box',function(e){
     if( $( e.target ).attr('data-select') == "false" ){
           addme[i] = $( e.target ).attr('data-val');
           $( e.target ).attr('data-select', "true");
