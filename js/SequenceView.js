@@ -30,7 +30,7 @@ SequenceView.sectiontemplate = Handlebars.compile($("#sequence-section-tpl").htm
 $(function(){
 
 	$('body').on('click', '#sequencer', function(event) {
-		app.stopcountdown(app.s, "sequence");
+		app.stopcountdown(app.t, "sequence");
 	});
 
 });
