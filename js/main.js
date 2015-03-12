@@ -30,7 +30,6 @@ var app = {
 		} else {
 			// ... if not: register mouse events instead
 			$('body').on('mousedown', 'a', function(event) {
-				console.log(event.target);
 				$(event.target).parent().addClass("tapme");
 			});
 

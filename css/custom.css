@@ -22,6 +22,14 @@ body {
 	//top: 20px;
 }
 
+.tab-bar {
+	background: #008CBA;
+}
+
+.left-small{
+	background: #00ba2e;
+}
+
 .row.first {
 		margin-top: 50px;
 }
