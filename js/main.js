@@ -59,6 +59,8 @@ var app = {
 			this.slider.slidePage( new StarterView(this.store).renderPage().el );
 		} else if ( hash == "#ABOUT" ) {
 			this.slider.slidePage(new AboutView(this.store).renderPage().el);
+		} else if ( hash == "#CS1" ) {
+			this.slider.slidePage(new CreateSeqOne().renderPage().el);
 		} else if ( hash == "#CSV" ) {
 			this.slider.slidePage(new ChooseShapeView(this.store).renderPage().el);
 		} else if ( hash == "#SEQ" ) {

@@ -35,7 +35,7 @@ body {
 }
 
 .inner-wrap {
-	background: rgba( 0,0,0,0.5 );
+	background: rgba( 0,0,0,0.25 );
 	height: 100vh;
 }
 
@@ -45,7 +45,7 @@ body {
 }
 
 .icon-box-outter {
-	background: rgba( 0,0,0,0.5 );
+	background: rgba( 0,0,0,0.75 );
 	border: 4px solid #008CBA;
 	width:150px;
 	height:150px;
@@ -104,6 +104,21 @@ body {
 .panel.callout.selected {
     background: #333;
     color: #fff;
+}
+
+.tb-view{
+	display: table;
+	width: 100%;
+}
+
+.tc-view{
+	display: table-cell;
+	width: 100%;
+}
+
+.tc-view.full{
+	height: 80vh;
+	vertical-align: middle;
 }
 
 .square div {
