@@ -202,7 +202,7 @@ var app = {
 	initialize: function() {
 		var self = this;
 
-		//location.hash = "#HOME";
+		location.hash = "#HOME";
 
 		this.registerEvents();
 		this.t = '';
