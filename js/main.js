@@ -61,8 +61,8 @@ var app = {
 			this.slider.slidePage(new AboutView(this.store).renderPage().el);
 		} else if ( hash == "#CS1" ) {
 			this.slider.slidePage(new CreateSeqOne().renderPage().el);
-		} else if ( hash == "#CSV" ) {
-			this.slider.slidePage(new ChooseShapeView(this.store).renderPage().el);
+		} else if ( hash == "#CSS" ) {
+			this.slider.slidePage(new CreateSeqShapes(this.store).renderPage().el);
 		} else if ( hash == "#SEQ" ) {
 			this.slider.slidePage(new SequenceView(this.store).renderPage().el);
 			this.countdown();
@@ -237,25 +237,56 @@ $(function(){
 		$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
 	});
 
-	var addme = new Array();
-  var i = 0;
-  $('body').on('mouseup touchend', '.box',function(e){
-    if( $( e.target ).attr('data-select') == "false" ){
-          addme[i] = $( e.target ).attr('data-val');
-          $( e.target ).attr('data-select', "true");
-          $( e.target ).addClass("selected");
-          i++;
-      } else {
-          $( e.target ).attr('data-select', "false");
-          $( e.target ).removeClass("selected");
-          var remove = $( e.target ).attr('data-val');
-          var del = addme.indexOf( remove );
-          $('.delete').html( "Delete " + remove );
-          addme.splice(del, 1);
-          i--;
-      }
-      //display(addme);
-  });
+	// var addshapes = new Array();
+	// var addcolors = new Array();
+  // var i = 0;
+	// var c = 0;
+  // $('body').on('mouseup touchend', '.shape-select',function(e){
+  //   if( $( e.target ).attr('data-select') == "false" ){
+	// 		addshapes[i] = $( e.target ).attr('data-val');
+  //         $( e.target ).attr('data-select', "true");
+  //         $( e.target ).addClass("selected");
+  //         i++;
+  //     } else {
+  //         $( e.target ).attr('data-select', "false");
+  //         $( e.target ).removeClass("selected");
+  //         var remove = $( e.target ).attr('data-val');
+  //         var del = addshapes.indexOf( remove );
+	// 				addshapes.splice(del, 1);
+  //         i--;
+  //     }
+  // });
+	//
+	// $('body').on('mouseup touchend', '.color-select',function(e){
+  //   if( $( e.target ).attr('data-select') == "false" ){
+	// 				addcolors[c] = $( e.target ).attr('data-val');
+  //         $( e.target ).attr('data-select', "true");
+  //         $( e.target ).addClass("selected");
+  //         c++;
+  //     } else {
+  //         $( e.target ).attr('data-select', "false");
+  //         $( e.target ).removeClass("selected");
+  //         var remove = $( e.target ).attr('data-val');
+  //         var del = addcolors.indexOf( remove );
+  //         $('.delete').html( "Delete " + remove );
+	// 				addcolors.splice(del, 1);
+  //         c--;
+  //     }
+  // });
+
+	// $('body').on('mouseup touchend', '#check-selection-1',function(e){
+	// 	console.log( addshapes );
+	// 	console.log( addcolors );
+	//
+	// 	if( addshapes.length == 0 || addcolors.length == 0 ){
+	// 		//Arrays are empty - no bueno
+	// 		app.showAlert("Please select shapes and colors before continuing", "Error");
+	// 	} else {
+	//
+	//
+	// 	}
+	//
+  // });
 
 });
 

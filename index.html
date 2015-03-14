@@ -217,15 +217,17 @@
 						<div class="tc-view full text-center">
 							<div class="row">
 								<div class="small-12 columns text-center">
-									<div class="icon-box-outter">
-										<div class="icon-box-inner text-center">
-											<i class="fa fa-square fa-2x"></i>
-											<i class="fa fa-circle fa-2x"></i><br />
-											<i class="fa fa-star fa-2x"></i>
-											<i class="fa fa-play fa-rotate-270 fa-2x"></i>
-											<p style="margin: 0px;">Shapes</p>
+									<a href="#CSS">
+										<div class="icon-box-outter">
+											<div class="icon-box-inner text-center">
+												<i class="fa fa-square fa-2x"></i>
+												<i class="fa fa-circle fa-2x"></i><br />
+												<i class="fa fa-star fa-2x"></i>
+												<i class="fa fa-play fa-rotate-270 fa-2x"></i>
+												<p style="margin: 0px;">Shapes</p>
+											</div>
 										</div>
-									</div>
+									</a>
 								</div>
 							</div>
 
@@ -237,13 +239,15 @@
 
 							<div class="row">
 								<div class="small-12 columns text-center">
-									<div class="icon-box-outter">
-										<div class="icon-box-inner text-center">
-											<i class="fa fa-arrow-circle-left fa-2x"></i>
-											<i class="fa fa-arrow-circle-right fa-2x"></i>
-											<p style="margin: 0px;">Arrows</p>
+									<a href="#CSA">
+										<div class="icon-box-outter">
+											<div class="icon-box-inner text-center">
+												<i class="fa fa-arrow-circle-left fa-2x"></i>
+												<i class="fa fa-arrow-circle-right fa-2x"></i>
+												<p style="margin: 0px;">Arrows</p>
+											</div>
 										</div>
-									</div>
+									</a>
 								</div>
 							</div>
 
@@ -256,75 +260,38 @@
 
 <script id="csv-section-tpl" type="text/x-handlebars-template">
 			<section class="main-section"> <!-- content goes here -->
-				<div class="row collapse" style="padding-top: 10px;">
-					<div class="small-12 columns text-center">
-						<p>Choose Shapes</p>
-					</div>
-				</div>
 
-				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-12 columns">
-						<div class="row collapse">
-							<div class="small-3 columns text-center">
-								<div class="box callout panel tight square" data-val="square" data-select="false">
-									<div />
-								</div>
-							</div>
-							<div class="small-3 columns text-center">
-								<div class="box callout panel tight triangle" data-val="triangle" data-select="false">
-									<div />
-								</div>
-							</div>
-							<div class="small-3 columns text-center">
-								<div class="box callout panel tight circle" data-val="circle" data-select="false">
-									<div />
-								</div>
-							</div>
-							<div class="small-3 columns text-center">
-								<div class="box callout panel tight diamond" data-val="diamond" data-select="false">
-									<div />
-								</div>
-							</div>
-						</div>
+						<ul class="shape-list-header no-bullet">
+							<li>Choose Shapes</li>
+						</ul>
+						<ul class="shape-list no-bullet">
+							<li class="shape-select" data-val="square" data-select="false">Square</li>
+							<li class="shape-select" data-val="triangle" data-select="false">Triange</li>
+							<li class="shape-select" data-val="circle" data-select="false">Circle</li>
+							<li class="shape-select" data-val="diamond" data-select="false">Diamond</li>
+						</ul>
 					</div>
 				</div>
 
-				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
-					<div class="small-12 columns text-center">
-						<p>Choose Colors</p>
-					</div>
-				</div>
-
-				<div class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-12 columns">
-						<div class="row collapse">
-							<div class="small-3 columns text-center">
-								<div class="box callout panel tight square" data-val="square" data-select="false">
-									<div />
-								</div>
-							</div>
-							<div class="small-3 columns text-center">
-								<div class="box callout panel tight triangle blue" data-val="triangle" data-select="false">
-									<div />
-								</div>
-							</div>
-							<div class="small-3 columns text-center">
-								<div class="box callout panel tight circle green" data-val="circle" data-select="false">
-									<div />
-								</div>
-							</div>
-							<div class="small-3 columns text-center">
-								<div class="box callout panel tight diamond orange" data-val="diamond" data-select="false">
-									<div />
-								</div>
-							</div>
-						</div>
+						<ul class="shape-list-header no-bullet">
+							<li>Choose Colors</li>
+						</ul>
+						<ul class="shape-list no-bullet">
+							<li class="color-select" data-val="red" data-select="false">Red</li>
+							<li class="color-select" data-val="yellow" data-select="false">Yellow</li>
+							<li class="color-select" data-val="blue" data-select="false">Blue</li>
+							<li class="color-select" data-val="green" data-select="false">Green</li>
+						</ul>
 					</div>
 				</div>
 
 				<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-12 columns text-center">
-						<a href="#CTV" class="button button-arrow expand round">Next Step!</a>
+						<span id="check-selection-1" class="button button-arrow expand round">Next Step!</span>
 					</div>
 				</div>
 			</section>
@@ -354,7 +321,7 @@
 <script src="css/foundation/js/vendor/jquery.js"></script>
 <script src="css/foundation/js/foundation.min.js"></script>
 
-<script src="js/ChooseShapeView.js"></script>
+<script src="js/CreateSeqShapes.js"></script>
 <script src="js/CreateSeqOne.js"></script>
 <script src="js/SequenceView.js"></script>
 <script src="js/HomeView.js"></script>

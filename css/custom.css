@@ -121,6 +121,50 @@ body {
 	vertical-align: middle;
 }
 
+.shape-list-header {
+	background: rgba( 0,0,0,0.75 );
+	border-top: 4px solid #008CBA;
+	border-left: 4px solid #008CBA;
+	border-right: 4px solid #008CBA;
+	border-bottom: 0.5px solid #008CBA;
+	padding: 3px;
+	margin: 0 auto;
+	text-align: center
+}
+
+.shape-list {
+	background: rgba( 0,0,0,0.75 );
+	border-bottom: 4px solid #008CBA;
+	border-left: 4px solid #008CBA;
+	border-right: 4px solid #008CBA;
+	padding: 3px;
+	margin: 0 auto;
+}
+
+.shape-list > li {
+	min-height: 44px;
+	padding-top: 5px;
+	padding-left: 5px;
+	margin-left: 5px;
+	border-bottom: 0.5px solid #008CBA;
+}
+
+.shape-list > li:last-child {
+	border-bottom: none;
+}
+
+.shape-list > li.selected {
+    background: #333;
+    color: #fff;
+}
+
+.shape-list > li.selected:after {
+    font-family: FontAwesome;
+		content: "\f00c";
+		float: right;
+		padding-right: 5px;
+}
+
 .square div {
 	width: 50px;
 	height: 50px;
