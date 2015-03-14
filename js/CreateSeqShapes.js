@@ -52,8 +52,8 @@ var CreateSeqShapes = function(store) {
   			//Arrays are empty - no bueno
   			app.showAlert("Please select shapes and colors before continuing", "Error");
   		} else {
-
-
+        //Do something with the arrays and sent to time view
+        location.hash = "#CST";
   		}
 
     });
@@ -89,7 +89,7 @@ var CreateSeqShapes = function(store) {
 };
 
 CreateSeqShapes.toptemplate = Handlebars.compile($("#top-bar-tpl").html());
-CreateSeqShapes.sectiontemplate = Handlebars.compile($("#csv-section-tpl").html());
+CreateSeqShapes.sectiontemplate = Handlebars.compile($("#css-section-tpl").html());
 
 $(function(){
 

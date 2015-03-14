@@ -63,6 +63,8 @@ var app = {
 			this.slider.slidePage(new CreateSeqOne().renderPage().el);
 		} else if ( hash == "#CSS" ) {
 			this.slider.slidePage(new CreateSeqShapes(this.store).renderPage().el);
+		} else if ( hash == "#CST" ) {
+			this.slider.slidePage(new CreateSeqTime(this.store).renderPage().el);
 		} else if ( hash == "#SEQ" ) {
 			this.slider.slidePage(new SequenceView(this.store).renderPage().el);
 			this.countdown();
@@ -200,7 +202,7 @@ var app = {
 	initialize: function() {
 		var self = this;
 
-		location.hash = "#HOME";
+		//location.hash = "#HOME";
 
 		this.registerEvents();
 		this.t = '';

@@ -258,7 +258,7 @@
 			</section>
 </script>
 
-<script id="csv-section-tpl" type="text/x-handlebars-template">
+<script id="css-section-tpl" type="text/x-handlebars-template">
 			<section class="main-section"> <!-- content goes here -->
 
 				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
@@ -297,6 +297,98 @@
 			</section>
 </script>
 
+<script id="cst-section-tpl" type="text/x-handlebars-template">
+			<section class="main-section"> <!-- content goes here -->
+
+				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns">
+						<ul class="shape-list-header no-bullet">
+							<li>Choose Total Time</li>
+						</ul>
+						<ul class="shape-list no-bullet">
+							<li>
+								<div class="row">
+									<div class="small-8 small-centered columns">
+										<div class="row collapse">
+											<div class="small-3 columns">
+												<div class="button prefix changetime" data-action="sub" data-send="#total_time" data-inc="1"><i class="fa fa-minus"></i></div>
+											</div>
+											<div class="small-6 columns">
+												<input class="text-center" type="text" id="total_time" value="0.00" readonly />
+											</div>
+											<div class="small-3 columns">
+												<div class="button postfix changetime" data-action="add" data-send="#total_time" data-inc="1"><i class="fa fa-plus"></i></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns">
+						<ul class="shape-list-header no-bullet">
+							<li>Choose Flash Time</li>
+						</ul>
+						<ul class="shape-list no-bullet">
+							<li>
+								<div class="row">
+									<div class="small-8 small-centered columns">
+										<div class="row collapse">
+											<div class="small-3 columns">
+												<div class="button prefix changetime" data-action="sub" data-send="#flash_time" data-inc="0.10"><i class="fa fa-minus"></i></div>
+											</div>
+											<div class="small-6 columns">
+												<input class="text-center" type="text" id="flash_time" value="0.00" readonly />
+											</div>
+											<div class="small-3 columns">
+												<div class="button postfix changetime" data-action="add" data-send="#flash_time" data-inc="0.10"><i class="fa fa-plus"></i></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns">
+						<ul class="shape-list-header no-bullet">
+							<li>Choose Down Time</li>
+						</ul>
+						<ul class="shape-list no-bullet">
+							<li>
+								<div class="row">
+									<div class="small-8 small-centered columns">
+										<div class="row collapse">
+											<div class="small-3 columns">
+												<div class="button prefix changetime" data-action="sub" data-send="#down_time" data-inc="0.10"><i class="fa fa-minus"></i></div>
+											</div>
+											<div class="small-6 columns">
+												<input class="text-center" type="text" id="down_time" value="0.00" readonly />
+											</div>
+											<div class="small-3 columns">
+												<div class="button postfix changetime" data-action="add" data-send="#down_time" data-inc="0.10"><i class="fa fa-plus"></i></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns text-center">
+						<span id="check-selection-1" class="button button-arrow expand round">Next Step!</span>
+					</div>
+				</div>
+			</section>
+</script>
+
 <script id="sequence-section-tpl" type="text/x-handlebars-template">
 	<section id="sequencer" class="main-section"> <!-- content goes here -->
 		<div class="table-view">
@@ -321,6 +413,7 @@
 <script src="css/foundation/js/vendor/jquery.js"></script>
 <script src="css/foundation/js/foundation.min.js"></script>
 
+<script src="js/CreateSeqTime.js"></script>
 <script src="js/CreateSeqShapes.js"></script>
 <script src="js/CreateSeqOne.js"></script>
 <script src="js/SequenceView.js"></script>
