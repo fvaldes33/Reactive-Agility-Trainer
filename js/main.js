@@ -14,6 +14,9 @@ var app = {
 
 	registerEvents: function() {
 		var self = this;
+
+		this.showAlert( document.documentElement.hasOwnProperty('ontouchstart') );
+
 		if (document.documentElement.hasOwnProperty('ontouchstart')) {
 			// ... if yes: register touch event listener to change the "selected" state of the item
 
@@ -184,6 +187,7 @@ var app = {
 
 		} else {
 			// ... if not: register mouse events instead
+
 			$('body').on('mousedown', 'a', function(event) {
 				$(event.target).parent().addClass("tapme");
 			});
@@ -540,7 +544,6 @@ var app = {
 
 		location.hash = "#HOME";
 
-		this.registerEvents();
 		this.t = '';
 		this.s = 0;
 		this.s_max = 0;
@@ -568,6 +571,7 @@ var app = {
 
 		this.uniqueRandoms = [];
 
+		this.registerEvents();
 		this.slider = new PageSlider($("body"));
 
 		this.store = new LocalStorageStore(function() {
@@ -588,57 +592,6 @@ $(function(){
 		console.log(e);
 		$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
 	});
-
-	// var addshapes = new Array();
-	// var addcolors = new Array();
-  // var i = 0;
-	// var c = 0;
-  // $('body').on('mouseup touchend', '.shape-select',function(e){
-  //   if( $( e.target ).attr('data-select') == "false" ){
-	// 		addshapes[i] = $( e.target ).attr('data-val');
-  //         $( e.target ).attr('data-select', "true");
-  //         $( e.target ).addClass("selected");
-  //         i++;
-  //     } else {
-  //         $( e.target ).attr('data-select', "false");
-  //         $( e.target ).removeClass("selected");
-  //         var remove = $( e.target ).attr('data-val');
-  //         var del = addshapes.indexOf( remove );
-	// 				addshapes.splice(del, 1);
-  //         i--;
-  //     }
-  // });
-	//
-	// $('body').on('mouseup touchend', '.color-select',function(e){
-  //   if( $( e.target ).attr('data-select') == "false" ){
-	// 				addcolors[c] = $( e.target ).attr('data-val');
-  //         $( e.target ).attr('data-select', "true");
-  //         $( e.target ).addClass("selected");
-  //         c++;
-  //     } else {
-  //         $( e.target ).attr('data-select', "false");
-  //         $( e.target ).removeClass("selected");
-  //         var remove = $( e.target ).attr('data-val');
-  //         var del = addcolors.indexOf( remove );
-  //         $('.delete').html( "Delete " + remove );
-	// 				addcolors.splice(del, 1);
-  //         c--;
-  //     }
-  // });
-
-	// $('body').on('mouseup touchend', '#check-selection-1',function(e){
-	// 	console.log( addshapes );
-	// 	console.log( addcolors );
-	//
-	// 	if( addshapes.length == 0 || addcolors.length == 0 ){
-	// 		//Arrays are empty - no bueno
-	// 		app.showAlert("Please select shapes and colors before continuing", "Error");
-	// 	} else {
-	//
-	//
-	// 	}
-	//
-  // });
 
 });
 
