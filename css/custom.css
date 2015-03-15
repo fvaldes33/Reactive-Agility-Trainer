@@ -89,6 +89,15 @@ body {
 	left: 90%;
 }
 
+.button-save:after {
+	font-family: FontAwesome;
+	content: "\f0c7";
+	position: absolute;
+	font-size: 24px;
+	top: 15px;
+	left: 70%;
+}
+
 .panel.callout {
 	background: rgba( 255,255,255,0.75 );
 	max-height: 80vh;
