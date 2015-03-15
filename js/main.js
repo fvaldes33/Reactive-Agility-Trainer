@@ -25,6 +25,161 @@ var app = {
 				$(event.target).parent().removeClass("tapme");
 			});
 
+			$('body').on('touchend', '.shape-select', function(e){
+				console.log(e);
+
+				if( $(e.target).attr('data-select') == "false" ){
+					$( e.target ).addClass("selected");
+					$( e.target ).attr("data-select", "true" );
+					self.addshapes[self.shape_count] = $( e.target ).attr('data-val');
+					self.shape_count++;
+				} else {
+					$( e.target ).removeClass("selected");
+					$( e.target ).attr("data-select", "false" );
+					self.shape_remove = $( e.target ).attr('data-val');
+					self.shape_del = self.addshapes.indexOf( self.shape_remove );
+					self.addshapes.splice(self.shape_del, 1);
+					self.shape_count--;
+				}
+
+				console.log( self.addshapes );
+
+			});
+			$('body').on('touchend', '.color-select',function(e){
+				console.log(e);
+
+				if( $(e.target).attr('data-select') == "false" ){
+					$( e.target ).addClass("selected");
+					$( e.target ).attr("data-select", "true" );
+					self.addcolors[self.color_count] = $( e.target ).attr('data-val');
+					self.color_count++;
+				} else {
+					$( e.target ).removeClass("selected");
+					$( e.target ).attr("data-select", "false" );
+					self.color_remove = $( e.target ).attr('data-val');
+					self.color_del = self.addcolors.indexOf( self.color_remove );
+					self.addcolors.splice(self.color_del, 1);
+					self.color_count--;
+				}
+				console.log( self.addcolors );
+			});
+
+			$('body').on('touchend', '.check-selection-1',function(e){
+				console.log(e);
+
+				if( self.addshapes.length == 0 || self.addcolors.length == 0 ){
+					//Arrays are empty - no bueno
+					app.showAlert("Please select shapes and colors before continuing", "Error");
+				} else {
+		      //Do something with the arrays and sent to time view
+		      var presets = JSON.parse(window.localStorage.getItem("presets"));
+		      var count = presets.length;
+
+		      var new_preset = {"id": count + 1,
+		                        "preset_name":"Temp",
+		                        "preset_shapes":self.addshapes,
+		                        "preset_colors":self.addcolors,
+		                        "preset_total_time":"0",
+		                        "preset_image_time":"0",
+		                        "preset_down_time":"0"
+		                        };
+
+		      $('.shape-select').each(function(){
+		        $( this ).attr('data-select', "false");
+		      });
+		      $('.color-select').each(function(){
+		        $( this ).attr('data-select', "false");
+		      });
+
+					self.shape_count = 0;
+					self.color_count = 0;
+					self.addshapes = [];
+					self.addcolors = [];
+
+		      self.store.createTempPreset( new_preset, function(answer){
+		        if( answer ){
+		          self.el = '';
+		          location.hash = "#CST";
+		        } else {
+		          app.showAlert("Error creating new preset", "Sorry!");
+		        }
+		      });
+
+				}
+
+				$('body').on('touchend', '.changetime', function(e){
+
+		      var action = $( this ).attr('data-action');
+		      var inc = $( this ).attr('data-inc');
+		      var sendto = $( this ).attr('data-send');
+
+		      if( action == "add" ){
+		        self.mousedown = true;
+		        self.increment('add', sendto, inc);
+		      }else{
+		        self.mousedown = true;
+		        self.increment('sub', sendto, inc);
+		      }
+
+		    });
+
+		    $('body').on('touchend', '.changetime', function(e){
+
+		      self.mousedown = false;
+
+		    });
+
+				$('body').on('touchend', '.complete-selection',function(e){
+
+					console.log( $('.complete-selection').html() );
+
+		      self.total_time = $('#total_time').val();
+		      self.flash_time = $('#flash_time').val();
+		      self.down_time = $('#down_time').val();
+
+		  		if( self.total_time == 0 || self.flash_time == 0 || self.down_time == 0 ){
+		  			//Arrays are empty - no bueno
+		  			app.showAlert("Please select times before continuing", "Error");
+		  		} else {
+		        //Do something with the arrays and sent to time view
+		        //location.hash = "#CST";
+		        var temp = JSON.parse(window.localStorage.getItem("temp_preset"));
+						console.log( temp );
+
+						temp.preset_total_time = self.total_time;
+		        temp.preset_image_time = self.flash_time;
+		        temp.preset_down_time = self.down_time;
+
+		        self.store.editTempPreset(temp, function(answer){
+			        if( answer ){
+			            //save
+			            self.store.savePreset( temp, function(finish){
+			              if( finish ){
+			                //Done
+			                app.showAlert("Done Saving", "Success!");
+			                setTimeout( function(){
+												self.total_time = 0;
+												self.flash_time = 0;
+												self.down_time = 0;
+
+												window.localStorage.removeItem("temp_preset");
+
+			                  location.hash = "#HOME";
+			                }, 1000);
+			              }else{
+			                //Error saving
+			                app.showAlert("Error Saving", "Sorry!");
+			              }
+			            });
+			         } else {
+			            //error
+									app.showAlert("Error Saving", "Sorry!");
+			         }
+						});
+					}
+		    });
+			});
+
 			$(window).on('hashchange', $.proxy(this.route, this));
 
 		} else {
