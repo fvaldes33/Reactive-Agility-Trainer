@@ -6,6 +6,8 @@ var CreateSeqTime = function(store) {
 		this.inner.html(CreateSeqTime.toptemplate());
 		this.inner.append( CreateSeqTime.sectiontemplate() );
 
+    console.log( this.el );
+
 		return this;
 	};
 

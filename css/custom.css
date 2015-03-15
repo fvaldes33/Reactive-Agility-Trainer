@@ -80,6 +80,10 @@ body {
 	//top: 55vh;
 }
 
+.button-save-run {
+	background: #00ba2e;
+}
+
 .button-arrow:after {
 	font-family: FontAwesome;
 	content: "\f18e";
@@ -87,6 +91,15 @@ body {
 	font-size: 24px;
 	top: 15px;
 	left: 90%;
+}
+
+.button-save-run:after {
+	font-family: FontAwesome;
+	content: "\f18e";
+	position: absolute;
+	font-size: 24px;
+	top: 15px;
+	left: 75%;
 }
 
 .button-save:after {

@@ -27,8 +27,6 @@ var app = {
 			});
 
 			$('body').on('touchstart', '.shape-select', function(e){
-				self.showAlert("Color Select");
-
 				if( $(e.target).attr('data-select') == "false" ){
 					$( e.target ).addClass("selected");
 					$( e.target ).attr("data-select", "true" );
@@ -46,10 +44,8 @@ var app = {
 				console.log( self.addshapes );
 
 			});
-			
-			$('body').on('touchstart', '.color-select',function(e){
-				self.showAlert("Color Select");
 
+			$('body').on('touchstart', '.color-select',function(e){
 				if( $(e.target).attr('data-select') == "false" ){
 					$( e.target ).addClass("selected");
 					$( e.target ).attr("data-select", "true" );
@@ -68,7 +64,6 @@ var app = {
 
 			$('body').on('touchstart', '.check-selection-1',function(e){
 				console.log(e);
-
 				if( self.addshapes.length == 0 || self.addcolors.length == 0 ){
 					//Arrays are empty - no bueno
 					app.showAlert("Please select shapes and colors before continuing", "Error");
@@ -86,12 +81,8 @@ var app = {
 		                        "preset_down_time":"0"
 		                        };
 
-		      $('.shape-select').each(function(){
-		        $( this ).attr('data-select', "false");
-		      });
-		      $('.color-select').each(function(){
-		        $( this ).attr('data-select', "false");
-		      });
+		      $('.shape-select').each(function(){ $( this ).attr('data-select', "false"); });
+		      $('.color-select').each(function(){ $( this ).attr('data-select', "false"); });
 
 					self.shape_count = 0;
 					self.color_count = 0;
@@ -108,79 +99,53 @@ var app = {
 		      });
 
 				}
-
-				$('body').on('touchstart', '.changetime', function(e){
-
-		      var action = $( this ).attr('data-action');
-		      var inc = $( this ).attr('data-inc');
-		      var sendto = $( this ).attr('data-send');
-
-		      if( action == "add" ){
-		        self.mousedown = true;
-		        self.increment('add', sendto, inc);
-		      }else{
-		        self.mousedown = true;
-		        self.increment('sub', sendto, inc);
-		      }
-
-		    });
-
-		    $('body').on('touchend', '.changetime', function(e){
-
-		      self.mousedown = false;
-
-		    });
-
-				$('body').on('touchstart', '.complete-selection',function(e){
-
-					console.log( $('.complete-selection').html() );
-
-		      self.total_time = $('#total_time').val();
-		      self.flash_time = $('#flash_time').val();
-		      self.down_time = $('#down_time').val();
-
-		  		if( self.total_time == 0 || self.flash_time == 0 || self.down_time == 0 ){
-		  			//Arrays are empty - no bueno
-		  			app.showAlert("Please select times before continuing", "Error");
-		  		} else {
-		        //Do something with the arrays and sent to time view
-		        //location.hash = "#CST";
-		        var temp = JSON.parse(window.localStorage.getItem("temp_preset"));
-						console.log( temp );
-
-						temp.preset_total_time = self.total_time;
-		        temp.preset_image_time = self.flash_time;
-		        temp.preset_down_time = self.down_time;
-
-		        self.store.editTempPreset(temp, function(answer){
-			        if( answer ){
-			            //save
-			            self.store.savePreset( temp, function(finish){
-			              if( finish ){
-			                //Done
-			                app.showAlert("Done Saving", "Success!");
-			                setTimeout( function(){
-												self.total_time = 0;
-												self.flash_time = 0;
-												self.down_time = 0;
-
-												window.localStorage.removeItem("temp_preset");
-
-			                  location.hash = "#HOME";
-			                }, 1000);
-			              }else{
-			                //Error saving
-			                app.showAlert("Error Saving", "Sorry!");
-			              }
-			            });
-			         } else {
-			            //error
-									app.showAlert("Error Saving", "Sorry!");
-			         }
-						});
-					}
-		    });
 			});
+
+			$('body').on('touchstart', '.changetime', function(e){
+
+	      var action = $( this ).attr('data-action');
+	      var inc = $( this ).attr('data-inc');
+	      var sendto = $( this ).attr('data-send');
+
+	      if( action == "add" ){
+	        self.mousedown = true;
+	        self.increment('add', sendto, inc);
+	      }else{
+	        self.mousedown = true;
+	        self.increment('sub', sendto, inc);
+	      }
+
+	    });
+
+	    $('body').on('touchend', '.changetime', function(e){
+
+	      self.mousedown = false;
+
+	    });
+
+			$('body').on('touchstart', '.complete-selection',function(e){
+
+				console.log( $('.complete-selection').html() );
+
+				var preset_name = $('#preset_name').val();
+	      var total_time = $('#total_time').val();
+	      var flash_time = $('#flash_time').val();
+	      var down_time = $('#down_time').val();
+
+				self.saveNewPreset(preset_name, total_time, flash_time, down_time);
+
+	    });
+
+			$('body').on('mouseup', '.save-run-selection',function(e){
+
+				var preset_name = $('#preset_name').val();
+	      var total_time = $('#total_time').val();
+	      var flash_time = $('#flash_time').val();
+	      var down_time = $('#down_time').val();
+
+				self.saveNewPreset(preset_name, total_time, flash_time, down_time, true);
+
+	    });
 
 			$(window).on('hashchange', $.proxy(this.route, this));
 
@@ -215,6 +180,7 @@ var app = {
 				console.log( self.addshapes );
 
 			});
+
 			$('body').on('mouseup', '.color-select',function(e){
 				console.log(e);
 
@@ -236,7 +202,6 @@ var app = {
 
 			$('body').on('mouseup', '.check-selection-1',function(e){
 				console.log(e);
-
 				if( self.addshapes.length == 0 || self.addcolors.length == 0 ){
 					//Arrays are empty - no bueno
 					app.showAlert("Please select shapes and colors before continuing", "Error");
@@ -254,12 +219,8 @@ var app = {
 		                        "preset_down_time":"0"
 		                        };
 
-		      $('.shape-select').each(function(){
-		        $( this ).attr('data-select', "false");
-		      });
-		      $('.color-select').each(function(){
-		        $( this ).attr('data-select', "false");
-		      });
+		      $('.shape-select').each(function(){ $( this ).attr('data-select', "false"); });
+		      $('.color-select').each(function(){ $( this ).attr('data-select', "false"); });
 
 					self.shape_count = 0;
 					self.color_count = 0;
@@ -276,81 +237,105 @@ var app = {
 		      });
 
 				}
-
-				$('body').on('mousedown', '.changetime', function(e){
-
-		      var action = $( this ).attr('data-action');
-		      var inc = $( this ).attr('data-inc');
-		      var sendto = $( this ).attr('data-send');
-
-		      if( action == "add" ){
-		        self.mousedown = true;
-		        self.increment('add', sendto, inc);
-		      }else{
-		        self.mousedown = true;
-		        self.increment('sub', sendto, inc);
-		      }
-
-		    });
-
-		    $('body').on('mouseup', '.changetime', function(e){
-
-		      self.mousedown = false;
-
-		    });
-
-				$('body').on('mouseup', '.complete-selection',function(e){
-
-					console.log( $('.complete-selection').html() );
-
-		      self.total_time = $('#total_time').val();
-		      self.flash_time = $('#flash_time').val();
-		      self.down_time = $('#down_time').val();
-
-		  		if( self.total_time == 0 || self.flash_time == 0 || self.down_time == 0 ){
-		  			//Arrays are empty - no bueno
-		  			app.showAlert("Please select times before continuing", "Error");
-		  		} else {
-		        //Do something with the arrays and sent to time view
-		        //location.hash = "#CST";
-		        var temp = JSON.parse(window.localStorage.getItem("temp_preset"));
-						console.log( temp );
-
-						temp.preset_total_time = self.total_time;
-		        temp.preset_image_time = self.flash_time;
-		        temp.preset_down_time = self.down_time;
-
-		        self.store.editTempPreset(temp, function(answer){
-			        if( answer ){
-			            //save
-			            self.store.savePreset( temp, function(finish){
-			              if( finish ){
-			                //Done
-			                app.showAlert("Done Saving", "Success!");
-			                setTimeout( function(){
-												self.total_time = 0;
-												self.flash_time = 0;
-												self.down_time = 0;
-
-												window.localStorage.removeItem("temp_preset");
-
-			                  location.hash = "#HOME";
-			                }, 1000);
-			              }else{
-			                //Error saving
-			                app.showAlert("Error Saving", "Sorry!");
-			              }
-			            });
-			         } else {
-			            //error
-									app.showAlert("Error Saving", "Sorry!");
-			         }
-						});
-					}
-		    });
 			});
 
+			$('body').on('mousedown', '.changetime', function(e){
+
+				console.log("Changing time");
+
+	      var action = $( this ).attr('data-action');
+	      var inc = $( this ).attr('data-inc');
+	      var sendto = $( this ).attr('data-send');
+
+	      if( action == "add" ){
+	        self.mousedown = true;
+	        self.increment('add', sendto, inc);
+	      }else{
+	        self.mousedown = true;
+	        self.increment('sub', sendto, inc);
+	      }
+
+	    });
+
+	    $('body').on('mouseup', '.changetime', function(e){
+
+	      self.mousedown = false;
+
+	    });
+
+			$('body').on('mouseup', '.complete-selection',function(e){
+
+				console.log( $('.complete-selection').html() );
+
+				var preset_name = $('#preset_name').val();
+	      var total_time = $('#total_time').val();
+	      var flash_time = $('#flash_time').val();
+	      var down_time = $('#down_time').val();
+
+				self.saveNewPreset(preset_name, total_time, flash_time, down_time);
+
+	    });
+
+			$('body').on('mouseup', '.save-run-selection',function(e){
+
+				var preset_name = $('#preset_name').val();
+	      var total_time = $('#total_time').val();
+	      var flash_time = $('#flash_time').val();
+	      var down_time = $('#down_time').val();
+
+				self.saveNewPreset(preset_name, total_time, flash_time, down_time, true);
+
+	    });
+
 			$(window).on('hashchange', $.proxy(this.route, this));
+		}
+
+	},
+
+	saveNewPreset: function(preset_name, total_time, flash_time, down_time, run = false){
+		var self = this;
+
+		if( total_time == 0 || flash_time == 0 || down_time == 0 ){
+			//Arrays are empty - no bueno
+			app.showAlert("Please select times before continuing", "Error");
+		} else {
+			//Do something with the arrays and sent to time view
+			//location.hash = "#CST";
+			var temp = JSON.parse(window.localStorage.getItem("temp_preset"));
+			console.log( temp );
+			temp.preset_name = preset_name;
+			temp.preset_total_time = total_time;
+			temp.preset_image_time = flash_time;
+			temp.preset_down_time = down_time;
+
+			this.store.editTempPreset(temp, function(answer){
+				if( answer ){
+						//save
+						self.store.savePreset( temp, function(finish){
+							if( finish ){
+								//Done
+								app.showAlert("Done Saving", "Success!");
+								setTimeout( function(){
+
+									window.localStorage.removeItem("temp_preset");
+
+									if( run ){
+										location.hash = "#SEQ";
+									} else {
+										location.hash = "#HOME";
+									}
+
+								}, 1000);
+							}else{
+								//Error saving
+								app.showAlert("Error Saving", "Sorry!");
+							}
+						});
+				} else {
+						//error
+						app.showAlert("Error Saving", "Sorry!");
+				}
+			});
 		}
 
 	},
@@ -387,13 +372,13 @@ var app = {
 		var page;
 
 		if (!hash) {
-			//this.slider.slidePage(new HomeView().renderPage().el);
+			this.slider.slidePage(new HomeView().renderPage().el);
 		} else if (hash == "#") {
 			//$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
 		} else if ( hash == "#HOME" ) {
-			this.slider.slidePage(new HomeView().renderPage().el);
+			this.slider.slidePageFrom(new HomeView().renderPage().el, 'left');
 		} else if ( hash == "#SETTINGS" ) {
-			$('body').html(new SettingsView().renderPage().el);
+			this.slider.slidePage(new SettingsView().renderPage().el);
 		} else if ( hash == "#STARTER" ) {
 			this.slider.slidePage( new StarterView(this.store).renderPage().el );
 		} else if ( hash == "#ABOUT" ) {
@@ -541,7 +526,7 @@ var app = {
 	initialize: function() {
 		var self = this;
 
-		location.hash = "#HOME";
+		//location.hash = "#HOME";
 
 		this.t = '';
 		this.s = 0;
@@ -563,9 +548,6 @@ var app = {
 		this.color_remove;
 		this.color_del;
 
-		this.total_time = 0;
-		this.flash_time = 0;
-		this.down_time = 0;
 		this.mousedown = false;
 
 		this.uniqueRandoms = [];
@@ -585,12 +567,12 @@ app.initialize();
 
 $(function(){
 
-	var menuShow = false;
-	$('.right-menu').on('click', function(e){
-		e.preventDefault();
-		console.log(e);
-		$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
-	});
+	// var menuShow = false;
+	// $('.right-menu').on('click', function(e){
+	// 	e.preventDefault();
+	// 	console.log(e);
+	// 	$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
+	// });
 
 });
 

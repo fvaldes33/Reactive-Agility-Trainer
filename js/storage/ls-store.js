@@ -32,6 +32,7 @@ var LocalStorageStore = function(successCallback, errorCallback) {
 		var presets = JSON.parse(window.localStorage.getItem("presets"));
 		presets.push(preset);
 		window.localStorage.setItem("presets", JSON.stringify(presets));
+		window.localStorage.setItem("chosenpreset", JSON.stringify(preset));
 
 		callLater(callback, true);
 	}
