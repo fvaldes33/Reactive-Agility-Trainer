@@ -459,7 +459,8 @@ var app = {
                     $('#counter').html(self.shapes[self.n]);
                 } else if( self.i == self.i_max){
                     $('#counter').html("REST");
-										self.n = Math.floor((Math.random() * self.shapes.length));
+										// self.n = Math.floor((Math.random() * self.shapes.length));
+										self.n = self.makeUniqueRandom(self.shapes.length);
 										self.i = 0;
 										self.rest = true;
                 }
