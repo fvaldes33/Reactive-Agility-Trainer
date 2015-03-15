@@ -128,7 +128,7 @@ var app = {
 	      var flash_time = $('#flash_time').val();
 	      var down_time = $('#down_time').val();
 
-				self.saveNewPreset(preset_name, total_time, flash_time, down_time);
+				self.saveNewPreset(preset_name, total_time, flash_time, down_time, false);
 
 	    });
 
@@ -315,7 +315,7 @@ var app = {
 
 									window.localStorage.removeItem("temp_preset");
 
-									if( run ){
+									if( run === true ){
 										location.hash = "#SEQ";
 									} else {
 										location.hash = "#HOME";
