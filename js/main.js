@@ -518,9 +518,7 @@ var app = {
 
 	initialize: function() {
 		var self = this;
-
-		this.showAlert("Working");
-
+		
 		location.hash = "#Home";
 
 		this.t = '';
