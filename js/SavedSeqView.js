@@ -1,11 +1,17 @@
-var CreateSeqShapes = function(store) {
+var SavedSeqView = function(store) {
 
 	this.renderPage = function(){
 
+    var self = this;
+
 		this.el.append( this.inner );
-		this.inner.html(CreateSeqShapes.toptemplate());
-		this.inner.append( CreateSeqShapes.sectiontemplate() );
-		
+		this.inner.html(SavedSeqView.toptemplate());
+
+    store.getPresets(function(presets){
+			console.log(presets);
+			self.inner.append( SavedSeqView.sectiontemplate(presets) );
+		});
+
     return this;
 	};
 
@@ -24,8 +30,8 @@ var CreateSeqShapes = function(store) {
 
 };
 
-CreateSeqShapes.toptemplate = Handlebars.compile($("#top-bar-tpl").html());
-CreateSeqShapes.sectiontemplate = Handlebars.compile($("#css-section-tpl").html());
+SavedSeqView.toptemplate = Handlebars.compile($("#top-bar-tpl").html());
+SavedSeqView.sectiontemplate = Handlebars.compile($("#saved-section-tpl").html());
 
 $(function(){
 

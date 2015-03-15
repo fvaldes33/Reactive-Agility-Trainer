@@ -192,49 +192,60 @@ body {
 		padding-right: 5px;
 }
 
-.square div {
-	width: 50px;
-	height: 50px;
-	background: #FFF;
+.seq-shape {
+	font-size: 350px;
 }
 
-.triangle div {
+.square {
+	width: 200px;
+	height: 200px;
+	background: #FFF;
+	margin: 0 auto;
+}
+
+.triangle {
 	width: 0;
 	height: 0;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-	border-bottom: 50px solid #fff;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	border-bottom: 200px solid #fff;
+	margin: 0 auto;
 }
+
 .star:after {
 	content: "Star";
 }
 
-.diamond div{
+.diamond{
   width: 0;
   height: 0;
-  border: 25px solid transparent;
+  border: 150px solid transparent;
   border-bottom-color: #fff;
-  position: relative; top: -25px;
+  position: relative;
+	top: -150px;
+	margin: 0 auto;
 }
 
-.diamond div:after {
+.diamond:after {
   content: '';
   position: absolute;
-  left: -25px;
-  top: 25px;
+  left: -150px;
+  top: 150px;
   width: 0;
   height: 0;
-  border: 25px solid transparent;
+  border: 150px solid transparent;
   border-top-color: #fff;
+	margin: 0 auto;
 }
 
-.circle div {
-	width: 50px;
-	height: 50px;
+.circle {
+	width: 200px;
+	height: 200px;
 	background: #fff;
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
+	margin: 0 auto;
 }
 
 .table-view {

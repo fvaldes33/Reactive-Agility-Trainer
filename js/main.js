@@ -378,6 +378,8 @@ var app = {
 			this.slider.slidePage( new StarterView(this.store).renderPage().el );
 		} else if ( hash == "#ABOUT" ) {
 			this.slider.slidePage(new AboutView(this.store).renderPage().el);
+		} else if ( hash == "#SAVED" ) {
+			this.slider.slidePage(new SavedSeqView(this.store).renderPage().el);
 		} else if ( hash == "#CS1" ) {
 			this.slider.slidePage(new CreateSeqOne().renderPage().el);
 		} else if ( hash == "#CSS" ) {
@@ -456,7 +458,7 @@ var app = {
 							self.i = Math.round(self.i * 100) / 100;
 
                 if( self.i < self.i_max ){
-                    $('#counter').html(self.shapes[self.n]);
+                    $('#counter').html(self.shapeme(self.shapes[self.n]));
                 } else if( self.i == self.i_max){
                     $('#counter').html("REST");
 										// self.n = Math.floor((Math.random() * self.shapes.length));
@@ -500,16 +502,23 @@ var app = {
 
 		switch(str){
 			case "Square":
-				result = '<i class="fa fa-square fa-5x"></i>';
+				//result = '<i class="fa fa-square seq-shape"></i>';
+				result = '<div class="square"></div>';
 				break;
 			case "Triangle":
-				result = '<i class="fa fa-exclamation-triangle fa-5x"></i>';
+				result = '<div class="triangle"></div>';
+				//result = '<i class="fa fa-exclamation-triangle seq-shape"></i>';
 				break;
 			case "Circle":
-				result = '<i class="fa fa-circle fa-5x"></i>';
+				//result = '<i class="fa fa-circle seq-shape"></i>';
+				result = '<div class="circle"></div>';
 				break;
 			case "Star":
-				result = '<i class="fa fa-star fa-5x"></i>';
+				result = '<i class="fa fa-star seq-shape"></i>';
+				break;
+			case "Diamond":
+				result = '<div class="diamond"></div>';
+				//result = '<i class="fa fa-star seq-shape"></i>';
 				break;
 		}
 
@@ -598,19 +607,19 @@ Handlebars.registerHelper("formatshapes", function(shapes, options) {
 
 		switch(shapes[i]) {
 			case "Square":
-				d = d + '<div class="small-4 columns text-center end"><i class="fa fa-square"></i></div>';
+				d = d + '<i class="fa fa-square"></i>';
 				//o = '<i class="fa fa-square"></i>';
 				break;
 			case "Circle":
-				d = d + '<div class="small-4 columns text-center end"><i class="fa fa-circle"></i></div>';
+				d = d + '<i class="fa fa-circle"></i>';
 				//o = '<i class="fa fa-circle"></i>';
 				break;
 			case "Triangle":
-				d = d + '<div class="small-4 columns text-center end"><i class="fa fa-exclamation-triangle"></i></div>';
+				d = d + '<i class="fa fa-exclamation-triangle"></i>';
 				//o = '<i class="fa fa-exclamation-triangle"></i>';
 				break;
 			case "Star":
-				d = d + '<div class="small-4 columns text-center end"><i class="fa fa-star"></i></div>';
+				d = d + '<i class="fa fa-star"></i>';
 				//o = '<i class="fa fa-star"></i>';
 				break;
 		}
