@@ -22,6 +22,11 @@ body {
 	//top: 20px;
 }
 
+.main-section {
+	max-height: 80vh;
+	overflow-y: auto;
+}
+
 .tab-bar {
 	background: #008CBA;
 }
