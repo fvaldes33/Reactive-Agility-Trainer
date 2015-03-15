@@ -26,7 +26,7 @@ var app = {
 			});
 
 			$('body').on('touchend', '.shape-select', function(e){
-				console.log(e);
+				self.showAlert("Color Select");
 
 				if( $(e.target).attr('data-select') == "false" ){
 					$( e.target ).addClass("selected");
@@ -46,7 +46,7 @@ var app = {
 
 			});
 			$('body').on('touchend', '.color-select',function(e){
-				console.log(e);
+				self.showAlert("Color Select");
 
 				if( $(e.target).attr('data-select') == "false" ){
 					$( e.target ).addClass("selected");
