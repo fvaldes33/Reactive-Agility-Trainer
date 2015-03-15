@@ -366,14 +366,12 @@ var app = {
 		var self = this;
 		var hash = window.location.hash;
 
-		this.showAlert( hash );
-
 		if (!hash) {
-			this.slider.slidePage(new HomeView().renderPage().el);
+			//this.slider.slidePage(new HomeView().renderPage().el);
 		} else if (hash == "#Home") {
 			this.slider.slidePage(new HomeView().renderPage().el);
 		} else if ( hash == "#HOME" ) {
-			this.slider.slidePage(new HomeView().renderPage().el);
+			this.slider.slidePageFrom(new HomeView().renderPage().el, 'left');
 		} else if ( hash == "#SETTINGS" ) {
 			this.slider.slidePage(new SettingsView().renderPage().el);
 		} else if ( hash == "#STARTER" ) {
@@ -521,7 +519,9 @@ var app = {
 	initialize: function() {
 		var self = this;
 
-		location.hash = "#HOME";
+		this.showAlert("Working");
+
+		location.hash = "#Home";
 
 		this.t = '';
 		this.s = 0;
@@ -548,6 +548,7 @@ var app = {
 		this.uniqueRandoms = [];
 
 		this.registerEvents();
+
 		this.slider = new PageSlider($("body"));
 
 		this.store = new LocalStorageStore(function() {
