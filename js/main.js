@@ -372,7 +372,7 @@ var app = {
 
 		if (!hash) {
 			this.slider.slidePage(new HomeView().renderPage().el);
-		} else if (hash == "#") {
+		} else if (hash == "#Home") {
 			this.slider.slidePage(new HomeView().renderPage().el);
 		} else if ( hash == "#HOME" ) {
 			this.slider.slidePageFrom(new HomeView().renderPage().el, 'left');
@@ -523,7 +523,7 @@ var app = {
 	initialize: function() {
 		var self = this;
 
-		location.hash = "#";
+		location.hash = "#Home";
 
 		this.t = '';
 		this.s = 0;
