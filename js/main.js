@@ -1,9 +1,5 @@
 var app = {
 
-	slidePage: function(page) {
-
-	},
-
 	showAlert: function (message, title) {
 		if (navigator.notification) {
 			navigator.notification.alert(message, null, title, 'OK');
@@ -370,12 +366,14 @@ var app = {
 		var self = this;
 		var hash = window.location.hash;
 
+		this.showAlert( hash );
+
 		if (!hash) {
 			this.slider.slidePage(new HomeView().renderPage().el);
 		} else if (hash == "#Home") {
 			this.slider.slidePage(new HomeView().renderPage().el);
 		} else if ( hash == "#HOME" ) {
-			this.slider.slidePageFrom(new HomeView().renderPage().el, 'left');
+			this.slider.slidePage(new HomeView().renderPage().el);
 		} else if ( hash == "#SETTINGS" ) {
 			this.slider.slidePage(new SettingsView().renderPage().el);
 		} else if ( hash == "#STARTER" ) {
@@ -523,7 +521,7 @@ var app = {
 	initialize: function() {
 		var self = this;
 
-		location.hash = "#Home";
+		location.hash = "#HOME";
 
 		this.t = '';
 		this.s = 0;
