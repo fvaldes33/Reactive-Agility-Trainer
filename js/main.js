@@ -268,7 +268,7 @@ var app = {
 	      var flash_time = $('#flash_time').val();
 	      var down_time = $('#down_time').val();
 
-				self.saveNewPreset(preset_name, total_time, flash_time, down_time);
+				self.saveNewPreset(preset_name, total_time, flash_time, down_time, false);
 
 	    });
 
@@ -288,7 +288,7 @@ var app = {
 
 	},
 
-	saveNewPreset: function(preset_name, total_time, flash_time, down_time, run = false){
+	saveNewPreset: function(preset_name, total_time, flash_time, down_time, run){
 		var self = this;
 
 		if( total_time == 0 || flash_time == 0 || down_time == 0 ){
@@ -518,7 +518,7 @@ var app = {
 
 	initialize: function() {
 		var self = this;
-		
+
 		location.hash = "#Home";
 
 		this.t = '';
