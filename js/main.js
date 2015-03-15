@@ -15,15 +15,7 @@ var app = {
 	registerEvents: function() {
 		var self = this;
 
-		if ('ontouchstart' in document.documentElement) {
-		  this.showAlert( "touch start exist");
-		} else {
-			this.showAlert( "no touches" );
-		}
-
-		//this.showAlert( document.documentElement.hasOwnProperty('ontouchstart') );
-
-		if (document.documentElement.hasOwnProperty('ontouchstart')) {
+		if ( 'ontouchstart' in document.documentElement ) {
 			// ... if yes: register touch event listener to change the "selected" state of the item
 
 			$('body').on('touchstart', 'a', function(event) {
@@ -34,7 +26,7 @@ var app = {
 				$(event.target).parent().removeClass("tapme");
 			});
 
-			$('body').on('touchend', '.shape-select', function(e){
+			$('body').on('touchstart', '.shape-select', function(e){
 				self.showAlert("Color Select");
 
 				if( $(e.target).attr('data-select') == "false" ){
@@ -54,7 +46,8 @@ var app = {
 				console.log( self.addshapes );
 
 			});
-			$('body').on('touchend', '.color-select',function(e){
+			
+			$('body').on('touchstart', '.color-select',function(e){
 				self.showAlert("Color Select");
 
 				if( $(e.target).attr('data-select') == "false" ){
@@ -73,7 +66,7 @@ var app = {
 				console.log( self.addcolors );
 			});
 
-			$('body').on('touchend', '.check-selection-1',function(e){
+			$('body').on('touchstart', '.check-selection-1',function(e){
 				console.log(e);
 
 				if( self.addshapes.length == 0 || self.addcolors.length == 0 ){
@@ -116,7 +109,7 @@ var app = {
 
 				}
 
-				$('body').on('touchend', '.changetime', function(e){
+				$('body').on('touchstart', '.changetime', function(e){
 
 		      var action = $( this ).attr('data-action');
 		      var inc = $( this ).attr('data-inc');
@@ -138,7 +131,7 @@ var app = {
 
 		    });
 
-				$('body').on('touchend', '.complete-selection',function(e){
+				$('body').on('touchstart', '.complete-selection',function(e){
 
 					console.log( $('.complete-selection').html() );
 
