@@ -369,12 +369,11 @@ var app = {
 	route: function() {
 		var self = this;
 		var hash = window.location.hash;
-		var page;
 
 		if (!hash) {
 			this.slider.slidePage(new HomeView().renderPage().el);
 		} else if (hash == "#") {
-			//$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
+			this.slider.slidePage(new HomeView().renderPage().el);
 		} else if ( hash == "#HOME" ) {
 			this.slider.slidePageFrom(new HomeView().renderPage().el, 'left');
 		} else if ( hash == "#SETTINGS" ) {
@@ -395,8 +394,6 @@ var app = {
 		}
 
 		this.stopcountdown(this.s, 'all');
-
-		//this.slider.slidePage($(page));
 
 	},
 
@@ -526,7 +523,7 @@ var app = {
 	initialize: function() {
 		var self = this;
 
-		//location.hash = "#HOME";
+		location.hash = "#";
 
 		this.t = '';
 		this.s = 0;
