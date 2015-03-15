@@ -15,7 +15,13 @@ var app = {
 	registerEvents: function() {
 		var self = this;
 
-		this.showAlert( document.documentElement.hasOwnProperty('ontouchstart') );
+		if ('ontouchstart' in document.documentElement) {
+		  this.showAlert( "touch start exist");
+		} else {
+			this.showAlert( "no touches" );
+		}
+
+		//this.showAlert( document.documentElement.hasOwnProperty('ontouchstart') );
 
 		if (document.documentElement.hasOwnProperty('ontouchstart')) {
 			// ... if yes: register touch event listener to change the "selected" state of the item
