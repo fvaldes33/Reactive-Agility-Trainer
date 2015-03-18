@@ -16,7 +16,7 @@ select, input, .panel.callout i {
 
 body {
 	background: #333333;
-	background-image: url(../images/Agility.png);
+	background-image: url(../images/RAT_bg.png);
 	background-size: cover;
 	overflow: hidden;
 	//top: 20px;
@@ -28,11 +28,11 @@ body {
 }
 
 .tab-bar {
-	background: #008CBA;
+	background: #3E3E3E; /*#008CBA*/;
 }
 
 .left-small{
-	background: #00ba2e;
+	background: #FF0000;
 }
 
 .row.first {
@@ -50,8 +50,8 @@ body {
 }
 
 .icon-box-outter {
-	background: rgba( 0,0,0,0.75 );
-	border: 4px solid #008CBA;
+	background: rgba( 0,0,0,0.25 );
+	border: 4px solid #FF0000;
 	width:150px;
 	height:150px;
 	padding: 3px;
@@ -60,14 +60,15 @@ body {
 }
 
 .icon-box-inner {
-	border: 0.5px solid #008CBA;
+	background: rgba( 0,0,0,0.0 );
+	border: 0.5px solid #FF0000;
 	height: 136px;
 	display: table-cell;
 	vertical-align: middle;
 }
 
 .icon-box-inner i, .icon-box-inner p{
-	color: #00ba2e;
+	color: #FFFFFF;
 }
 
 .tapme i {
@@ -85,8 +86,17 @@ body {
 	//top: 55vh;
 }
 
+.button {
+	background: #3E3E3E;
+}
+
+.button:hover {
+	background: #FFFFFF;
+	color: #000;
+}
+
 .button-save-run {
-	background: #00ba2e;
+	background: #FF0000;
 }
 
 .button-arrow:after {
@@ -150,10 +160,10 @@ body {
 
 .shape-list-header {
 	background: rgba( 0,0,0,0.75 );
-	border-top: 4px solid #008CBA;
-	border-left: 4px solid #008CBA;
-	border-right: 4px solid #008CBA;
-	border-bottom: 0.5px solid #008CBA;
+	border-top: 4px solid #FF0000;
+	border-left: 4px solid #FF0000;
+	border-right: 4px solid #FF0000;
+	border-bottom: 0.5px solid #FF0000;
 	padding: 3px;
 	margin: 0 auto;
 	text-align: center
@@ -161,9 +171,9 @@ body {
 
 .shape-list {
 	background: rgba( 0,0,0,0.75 );
-	border-bottom: 4px solid #008CBA;
-	border-left: 4px solid #008CBA;
-	border-right: 4px solid #008CBA;
+	border-bottom: 4px solid #FF0000;
+	border-left: 4px solid #FF0000;
+	border-right: 4px solid #FF0000;
 	padding: 3px;
 	margin: 0 auto;
 }
@@ -173,7 +183,7 @@ body {
 	padding-top: 5px;
 	padding-left: 5px;
 	margin-left: 5px;
-	border-bottom: 0.5px solid #008CBA;
+	border-bottom: 0.5px solid #FF0000;
 }
 
 .shape-list > li:last-child {
