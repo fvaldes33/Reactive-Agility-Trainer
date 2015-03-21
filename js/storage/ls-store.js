@@ -11,8 +11,20 @@ var LocalStorageStore = function(successCallback, errorCallback) {
 		var results = presets.filter(function(element) {
             var settings = element.id;
             if( settings == id ) {
-							window.localStorage.setItem("chosenpreset", JSON.stringify(element));
-							return element;
+				window.localStorage.setItem("chosenpreset", JSON.stringify(element));
+				return element;
+            }
+        });
+		callLater(callback, results);
+	}
+
+	this.setPreset = function(id, callback){
+		var presets = JSON.parse(window.localStorage.getItem("presets"));
+		var results = presets.filter(function(element) {
+            var settings = element.id;
+            if( settings == id ) {
+				window.localStorage.setItem("chosenpreset", JSON.stringify(element));
+				return element;
             }
         });
 		callLater(callback, results);

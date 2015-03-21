@@ -384,6 +384,8 @@ var app = {
 			this.slider.slidePage(new CreateSeqOne().renderPage().el);
 		} else if ( hash == "#CSS" ) {
 			this.slider.slidePage(new CreateSeqShapes(this.store).renderPage().el);
+		} else if ( hash == "#CSA" ) {
+			this.slider.slidePage(new CreateSeqArrows(this.store).renderPage().el);
 		} else if ( hash == "#CST" ) {
 			this.slider.slidePage(new CreateSeqTime(this.store).renderPage().el);
 		} else if ( hash == "#SEQ" ) {
@@ -444,39 +446,39 @@ var app = {
 		this.rest = false;
 		this.shapes = seq.preset_shapes;
 
-    this.t = setInterval(function(){
-        if( self.s >= self.s_max ){
-           self.stopcountdown( self.t, 'sequence');
-        } else {
-            self.s = self.s + 0.10;
-						self.s = Math.round(self.s * 100) / 100;
+	    this.t = setInterval(function(){
+	        if( self.s >= self.s_max ){
+	           self.stopcountdown( self.t, 'sequence');
+	        } else {
+	            self.s = self.s + 0.10;
+							self.s = Math.round(self.s * 100) / 100;
 
-            $('.show').html( self.s );
+	            // $('.show').html( self.s );
 
-            if(!self.rest) {
-							self.i = self.i + 0.10;
-							self.i = Math.round(self.i * 100) / 100;
+	            if(!self.rest) {
+								self.i = self.i + 0.10;
+								self.i = Math.round(self.i * 100) / 100;
 
-                if( self.i < self.i_max ){
-                    $('#counter').html(self.shapeme(self.shapes[self.n]));
-                } else if( self.i == self.i_max){
-                    $('#counter').html("REST");
-										// self.n = Math.floor((Math.random() * self.shapes.length));
-										self.n = self.makeUniqueRandom(self.shapes.length);
-										self.i = 0;
-										self.rest = true;
-                }
-            } else {
-                if( self.d < self.d_max ){
-										self.d = self.d + 0.10;
-										self.d = Math.round(self.d * 100) / 100;
-                } else if( self.d == self.d_max ) {
-										self.rest = false;
-										self.d = 0;
-                }
-            }
-        }
-    }, 100);
+	                if( self.i < self.i_max ){
+	                    $('#counter').html(self.shapeme(self.shapes[self.n]));
+	                } else if( self.i == self.i_max){
+	                    $('#counter').html("");
+						// self.n = Math.floor((Math.random() * self.shapes.length));
+						self.n = self.makeUniqueRandom(self.shapes.length);
+						self.i = 0;
+						self.rest = true;
+	                }
+	            } else {
+	                if( self.d < self.d_max ){
+						self.d = self.d + 0.10;
+						self.d = Math.round(self.d * 100) / 100;
+	                } else if( self.d == self.d_max ) {
+						self.rest = false;
+						self.d = 0;
+	                }
+	            }
+	        }
+	    }, 100);
 
 	},
 
@@ -520,6 +522,25 @@ var app = {
 				result = '<div class="diamond"></div>';
 				//result = '<i class="fa fa-star seq-shape"></i>';
 				break;
+			case "rightarrow":
+				result = '<div class="rightarrow"></div>';
+				//result = '<i class="fa fa-star seq-shape"></i>';
+				break;
+			case "leftarrow":
+				result = '<div class="leftarrow"></div>';
+				//result = '<i class="fa fa-star seq-shape"></i>';
+				break;
+			case "downarrow":
+				result = '<div class="downarrow"></div>';
+				//result = '<i class="fa fa-star seq-shape"></i>';
+				break;
+			case "uparrow":
+				result = '<div class="uparrow"></div>';
+				//result = '<i class="fa fa-star seq-shape"></i>';
+				break;
+			default:
+				result = str;
+
 		}
 
 		return result;

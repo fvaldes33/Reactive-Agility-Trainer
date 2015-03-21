@@ -228,9 +228,9 @@
 						<ul class="shape-list-header no-bullet">
 							<li>Saved Presets</li>
 						</ul>
-						<ul class="shape-list no-bullet">
+						<ul class="shape-list no-bullet" style="max-height: 80vh;">
 							{{#.}}
-							<li>
+							<li class="saved-preset" data-val = "{{this.id}}">
 								<div class="row collapse">
 									<div class="small-12 columns">
 										{{this.preset_name}}
@@ -319,6 +319,49 @@
 							<li class="shape-select" data-val="Triangle" data-select="false">Triange</li>
 							<li class="shape-select" data-val="Circle" data-select="false">Circle</li>
 							<li class="shape-select" data-val="Diamond" data-select="false">Diamond</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns">
+						<ul class="shape-list-header no-bullet">
+							<li>Choose Colors</li>
+						</ul>
+						<ul class="shape-list no-bullet">
+							<li class="color-select" data-val="Red" data-select="false">Red</li>
+							<li class="color-select" data-val="Yellow" data-select="false">Yellow</li>
+							<li class="color-select" data-val="Blue" data-select="false">Blue</li>
+							<li class="color-select" data-val="Green" data-select="false">Green</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="btn-row" class="row collapse" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns text-center">
+						<span id="" class="button button-arrow expand round check-selection-1">Next Step!</span>
+					</div>
+				</div>
+			</section>
+</script>
+
+<script id="csa-section-tpl" type="text/x-handlebars-template">
+			<section class="main-section">
+
+				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+					<div class="small-12 columns">
+						<ul class="shape-list-header no-bullet">
+							<li>Choose Arrows</li>
+						</ul>
+						<ul class="shape-list no-bullet">
+							<li class="shape-select" data-val="rightarrow" data-select="false">Right Arrow</li>
+							<li class="shape-select" data-val="leftarrow" data-select="false">Left Arrow</li>
+							<li class="shape-select" data-val="uparrow" data-select="false">Up Arrow</li>
+							<li class="shape-select" data-val="downarrow" data-select="false">Down Arrow</li>
+							<li class="shape-select" data-val="rightuparrow" data-select="false">Right Up Arrow</li>
+							<li class="shape-select" data-val="leftuparrow" data-select="false">Left Up Arrow</li>
+							<li class="shape-select" data-val="rightdownarrow" data-select="false">Right Down Arrow</li>
+							<li class="shape-select" data-val="leftdownarrow" data-select="false">Left Down Arrow</li>
 						</ul>
 					</div>
 				</div>
@@ -461,7 +504,7 @@
 	<section id="sequencer" class="main-section"> <!-- content goes here -->
 		<div class="table-view">
 			<div class="table-cell">
-				<h1 class="show" style="position: absolute; top: 0px; left: 0px; "></h1>
+				<!--h1 class="show" style="position: absolute; top: 0px; left: 0px; "></h1-->
 				<h1 id="counter">Ready!</h1>
 			</div>
 		</div>
@@ -483,6 +526,7 @@
 
 <script src="js/SavedSeqView.js"></script>
 <script src="js/CreateSeqTime.js"></script>
+<script src="js/CreateSeqArrows.js"></script>
 <script src="js/CreateSeqShapes.js"></script>
 <script src="js/CreateSeqOne.js"></script>
 <script src="js/SequenceView.js"></script>

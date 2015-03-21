@@ -25,7 +25,7 @@ var ChooseShapeView = function(store) {
 };
 
 ChooseShapeView.toptemplate = Handlebars.compile($("#top-bar-tpl").html());
-ChooseShapeView.sectiontemplate = Handlebars.compile($("#csv-section-tpl").html());
+ChooseShapeView.sectiontemplate = Handlebars.compile($("#cst-section-tpl").html());
 
 $(function(){
 

@@ -176,6 +176,8 @@ body {
 	border-right: 4px solid #FF0000;
 	padding: 3px;
 	margin: 0 auto;
+	max-height: 30vh;
+	overflow: auto;
 }
 
 .shape-list > li {
@@ -256,6 +258,30 @@ body {
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	margin: 0 auto;
+}
+
+.rightarrow:after {
+	font-family: FontAwesome;
+	content: '\f061';
+	font-size: 250px;
+}
+
+.leftarrow:after {
+	font-family: FontAwesome;
+	content: '\f060';
+	font-size: 250px;
+}
+
+.uparrow:after {
+	font-family: FontAwesome;
+	content: '\f062';
+	font-size: 250px;
+}
+
+.downarrow:after {
+	font-family: FontAwesome;
+	content: '\f063';
+	font-size: 250px;
 }
 
 .table-view {

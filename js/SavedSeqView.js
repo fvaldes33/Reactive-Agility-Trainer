@@ -1,18 +1,30 @@
 var SavedSeqView = function(store) {
 
+	this.setPreset = function(){
+		var self = this;
+
+		var preset = $( this ).attr('data-val');
+		
+		store.setPreset( preset , function(settings) {
+			console.log( preset );
+			location.hash = "#SEQ";
+		});
+
+	};
+
 	this.renderPage = function(){
 
-    var self = this;
+	    var self = this;
 
 		this.el.append( this.inner );
 		this.inner.html(SavedSeqView.toptemplate());
 
-    store.getPresets(function(presets){
+	    store.getPresets(function(presets){
 			console.log(presets);
 			self.inner.append( SavedSeqView.sectiontemplate(presets) );
 		});
 
-    return this;
+	    return this;
 	};
 
 	this.initialize = function() {
@@ -22,11 +34,13 @@ var SavedSeqView = function(store) {
 		this.inner = $('<div class="inner-wrap" />');
 		this.section = $('<section class="main-section" />');
 
-  };
+		this.inner.on('click', '.saved-preset', this.setPreset);
+  	
+  	};
 
 	this.initialize();
 
-  var self = this;
+  	var self = this;
 
 };
 
