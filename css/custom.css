@@ -178,6 +178,7 @@ body {
 	margin: 0 auto;
 	max-height: 30vh;
 	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 .shape-list > li {
@@ -206,82 +207,6 @@ body {
 
 .seq-shape {
 	font-size: 350px;
-}
-
-.square {
-	width: 200px;
-	height: 200px;
-	background: #FFF;
-	margin: 0 auto;
-}
-
-.triangle {
-	width: 0;
-	height: 0;
-	border-left: 100px solid transparent;
-	border-right: 100px solid transparent;
-	border-bottom: 200px solid #fff;
-	margin: 0 auto;
-}
-
-.star:after {
-	content: "Star";
-}
-
-.diamond{
-  width: 0;
-  height: 0;
-  border: 150px solid transparent;
-  border-bottom-color: #fff;
-  position: relative;
-	top: -150px;
-	margin: 0 auto;
-}
-
-.diamond:after {
-  content: '';
-  position: absolute;
-  left: -150px;
-  top: 150px;
-  width: 0;
-  height: 0;
-  border: 150px solid transparent;
-  border-top-color: #fff;
-	margin: 0 auto;
-}
-
-.circle {
-	width: 200px;
-	height: 200px;
-	background: #fff;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
-	margin: 0 auto;
-}
-
-.rightarrow:after {
-	font-family: FontAwesome;
-	content: '\f061';
-	font-size: 250px;
-}
-
-.leftarrow:after {
-	font-family: FontAwesome;
-	content: '\f060';
-	font-size: 250px;
-}
-
-.uparrow:after {
-	font-family: FontAwesome;
-	content: '\f062';
-	font-size: 250px;
-}
-
-.downarrow:after {
-	font-family: FontAwesome;
-	content: '\f063';
-	font-size: 250px;
 }
 
 .table-view {

@@ -22,7 +22,7 @@ var app = {
 				$(event.target).parent().removeClass("tapme");
 			});
 
-			$('body').on('touchstart', '.shape-select', function(e){
+			$('body').on('touchend', '.shape-select', function(e){
 				if( $(e.target).attr('data-select') == "false" ){
 					$( e.target ).addClass("selected");
 					$( e.target ).attr("data-select", "true" );
@@ -41,7 +41,7 @@ var app = {
 
 			});
 
-			$('body').on('touchstart', '.color-select',function(e){
+			$('body').on('touchend', '.color-select',function(e){
 				if( $(e.target).attr('data-select') == "false" ){
 					$( e.target ).addClass("selected");
 					$( e.target ).attr("data-select", "true" );
@@ -58,7 +58,7 @@ var app = {
 				console.log( self.addcolors );
 			});
 
-			$('body').on('touchstart', '.check-selection-1',function(e){
+			$('body').on('touchend', '.check-selection-1',function(e){
 				console.log(e);
 				if( self.addshapes.length == 0 || self.addcolors.length == 0 ){
 					//Arrays are empty - no bueno
@@ -119,7 +119,7 @@ var app = {
 
 	    });
 
-			$('body').on('touchstart', '.complete-selection',function(e){
+			$('body').on('touchend', '.complete-selection',function(e){
 
 				console.log( $('.complete-selection').html() );
 
@@ -132,7 +132,7 @@ var app = {
 
 	    });
 
-			$('body').on('mouseup', '.save-run-selection',function(e){
+			$('body').on('touchend', '.save-run-selection',function(e){
 
 				var preset_name = $('#preset_name').val();
 	      var total_time = $('#total_time').val();
@@ -337,30 +337,30 @@ var app = {
 	},
 
 	increment: function(act, sendto, inc){
-    var self = this;
+	    var self = this;
 
-    if( this.mousedown ){
+	    if( this.mousedown ){
 
-      if( act == "add" ){
-        var curr = $(sendto).val();
-        curr = Number(curr) + Number(inc);
-        curr = Math.round(curr * 100) / 100;
-        $(sendto).val(curr);
-      } else {
-        var curr = $(sendto).val();
+	      if( act == "add" ){
+	        var curr = $(sendto).val();
+	        curr = Number(curr) + Number(inc);
+	        curr = Math.round(curr * 100) / 100;
+	        $(sendto).val(curr);
+	      } else {
+	        var curr = $(sendto).val();
 
-        if( curr > 0 ){
-          curr = Number(curr) - Number(inc);
-          curr = Math.round(curr * 100) / 100;
-          $(sendto).val(curr);
-        }
+	        if( curr > 0 ){
+	          curr = Number(curr) - Number(inc);
+	          curr = Math.round(curr * 100) / 100;
+	          $(sendto).val(curr);
+	        }
 
-      }
+	      }
 
-      setTimeout(function(){ self.increment(act, sendto, inc); }, 100);
-    }
+	      setTimeout(function(){ self.increment(act, sendto, inc); }, 100);
+	    }
 
-  },
+  	},
 
 	route: function() {
 		var self = this;
@@ -501,49 +501,66 @@ var app = {
 	shapeme: function(str) {
 
 		var result;
+		return '<div class="'+str+'"></div>';
 
-		switch(str){
-			case "Square":
-				//result = '<i class="fa fa-square seq-shape"></i>';
-				result = '<div class="square"></div>';
-				break;
-			case "Triangle":
-				result = '<div class="triangle"></div>';
-				//result = '<i class="fa fa-exclamation-triangle seq-shape"></i>';
-				break;
-			case "Circle":
-				//result = '<i class="fa fa-circle seq-shape"></i>';
-				result = '<div class="circle"></div>';
-				break;
-			case "Star":
-				result = '<i class="fa fa-star seq-shape"></i>';
-				break;
-			case "Diamond":
-				result = '<div class="diamond"></div>';
-				//result = '<i class="fa fa-star seq-shape"></i>';
-				break;
-			case "rightarrow":
-				result = '<div class="rightarrow"></div>';
-				//result = '<i class="fa fa-star seq-shape"></i>';
-				break;
-			case "leftarrow":
-				result = '<div class="leftarrow"></div>';
-				//result = '<i class="fa fa-star seq-shape"></i>';
-				break;
-			case "downarrow":
-				result = '<div class="downarrow"></div>';
-				//result = '<i class="fa fa-star seq-shape"></i>';
-				break;
-			case "uparrow":
-				result = '<div class="uparrow"></div>';
-				//result = '<i class="fa fa-star seq-shape"></i>';
-				break;
-			default:
-				result = str;
+		// switch(str){
+		// 	case "Square":
+		// 		//result = '<i class="fa fa-square seq-shape"></i>';
+		// 		result = '<div class="square"></div>';
+		// 		break;
+		// 	case "Triangle":
+		// 		result = '<div class="triangle"></div>';
+		// 		//result = '<i class="fa fa-exclamation-triangle seq-shape"></i>';
+		// 		break;
+		// 	case "Circle":
+		// 		//result = '<i class="fa fa-circle seq-shape"></i>';
+		// 		result = '<div class="circle"></div>';
+		// 		break;
+		// 	case "Star":
+		// 		result = '<i class="fa fa-star seq-shape"></i>';
+		// 		break;
+		// 	case "Diamond":
+		// 		result = '<div class="diamond"></div>';
+		// 		//result = '<i class="fa fa-star seq-shape"></i>';
+		// 		break;
+		// 	case "rightarrow":
+		// 		result = '<div class="rightarrow"></div>';
+		// 		//result = '<i class="fa fa-star seq-shape"></i>';
+		// 		break;
+		// 	case "leftarrow":
+		// 		result = '<div class="leftarrow"></div>';
+		// 		//result = '<i class="fa fa-star seq-shape"></i>';
+		// 		break;
+		// 	case "downarrow":
+		// 		result = '<div class="downarrow"></div>';
+		// 		//result = '<i class="fa fa-star seq-shape"></i>';
+		// 		break;
+		// 	case "uparrow":
+		// 		result = '<div class="uparrow"></div>';
+		// 		//result = '<i class="fa fa-star seq-shape"></i>';
+		// 		break;
+		// 	case "rightuparrow":
+		// 		result = '<div class="rightuparrow"></div>';
+		// 		//result = '<i class="fa fa-star seq-shape"></i>';
+		// 		break;
+		// 	case "leftuparrow":
+		// 		result = '<div class="leftuparrow"></div>';
+		// 		//result = '<i class="fa fa-star seq-shape"></i>';
+		// 		break;
+		// 	case "rightdownarrow":
+		// 		result = '<div class="rightdownarrow"></div>';
+		// 		//result = '<i class="fa fa-star seq-shape"></i>';
+		// 		break;
+		// 	case "leftdownarrow":
+		// 		result = '<div class="leftdownarrow"></div>';
+		// 		//result = '<i class="fa fa-star seq-shape"></i>';
+		// 		break;
+		// 	// default:
+		// 	// 	result = str;
 
-		}
+		// }
 
-		return result;
+		// return result;
 
 	},
 
@@ -626,24 +643,26 @@ Handlebars.registerHelper("formatshapes", function(shapes, options) {
 
 	for( var i = 0; i < shapes.length; i++ ) {
 
-		switch(shapes[i]) {
-			case "Square":
-				d = d + '<i class="fa fa-square"></i>';
-				//o = '<i class="fa fa-square"></i>';
-				break;
-			case "Circle":
-				d = d + '<i class="fa fa-circle"></i>';
-				//o = '<i class="fa fa-circle"></i>';
-				break;
-			case "Triangle":
-				d = d + '<i class="fa fa-exclamation-triangle"></i>';
-				//o = '<i class="fa fa-exclamation-triangle"></i>';
-				break;
-			case "Star":
-				d = d + '<i class="fa fa-star"></i>';
-				//o = '<i class="fa fa-star"></i>';
-				break;
-		}
+		d = d + '<div class="small-'+shapes[i]+'"></div>';
+
+		// switch(shapes[i]) {
+		// 	case "Square":
+		// 		d = d + '<i class="fa fa-square"></i>';
+		// 		//o = '<i class="fa fa-square"></i>';
+		// 		break;
+		// 	case "Circle":
+		// 		d = d + '<i class="fa fa-circle"></i>';
+		// 		//o = '<i class="fa fa-circle"></i>';
+		// 		break;
+		// 	case "Triangle":
+		// 		d = d + '<i class="fa fa-exclamation-triangle"></i>';
+		// 		//o = '<i class="fa fa-exclamation-triangle"></i>';
+		// 		break;
+		// 	case "Star":
+		// 		d = d + '<i class="fa fa-star"></i>';
+		// 		//o = '<i class="fa fa-star"></i>';
+		// 		break;
+		// }
 
 	}
 

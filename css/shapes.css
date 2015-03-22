@@ -2,21 +2,288 @@
 https://css-tricks.com/examples/ShapesOfCSS/
 */
 
-#diamond {
-  width: 0;
-  height: 0;
-  border: 25px solid transparent;
-  border-bottom-color: #fff;
-  position: relative; top: -25px;
+/*
+Small Shapes
+*/
+.small-square {
+  width: 25px;
+  height: 25px;
+  background: #FFF;
+  float: left;
 }
 
-#diamond:after {
-  content: '';
-  position: absolute;
-  left: -25px;
-  top: 25px;
+.small-triangle {
   width: 0;
   height: 0;
-  border: 25px solid transparent;
+  border-left: 12.5px solid transparent;
+  border-right: 12.5px solid transparent;
+  border-bottom: 25px solid #fff;
+  float: left;
+}
+
+.small-diamond{
+  width: 0;
+  height: 0;
+  border: 12.5px solid transparent;
+  border-bottom-color: #fff;
+  position: relative;
+  top: -12px;
+  float: left;
+}
+
+.small-diamond:after {
+  content: '';
+  position: absolute;
+  left: -12.5px;
+  top: 12px;
+  width: 0;
+  height: 0;
+  border: 12.5px solid transparent;
   border-top-color: #fff;
+  float: left;
+}
+
+.small-circle {
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  float: left;
+}
+
+.small-rightuparrow {
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  width: 10%;
+  float: left;
+}
+
+.small-rightuparrow:after {
+  font-family: FontAwesome;
+  content: '\f061';
+  //font-size: 250px; 
+}
+
+.small-leftuparrow {
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 10%;
+  float: left;
+}
+
+.small-leftuparrow:after {
+  font-family: FontAwesome;
+  content: '\f060';
+  //font-size: 250px; 
+}
+
+.small-rightdownarrow {
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 10%;
+  float: left;
+}
+
+.small-rightdownarrow:after {
+  font-family: FontAwesome;
+  content: '\f061';
+  //font-size: 250px; 
+}
+
+.small-leftdownarrow {
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  width: 10%;
+  float: left;
+}
+
+.small-leftdownarrow:after {
+  font-family: FontAwesome;
+  content: '\f060';
+  //font-size: 250px; 
+}
+
+.small-rightarrow{
+  width: 10%;
+  float: left;
+}
+
+.small-rightarrow:after {
+  font-family: FontAwesome;
+  content: '\f061';
+  //font-size: 250px;
+}
+
+.small-leftarrow{
+  width: 10%;
+  float: left;
+}
+
+.small-leftarrow:after {
+  font-family: FontAwesome;
+  content: '\f060';
+  //font-size: 250px;
+}
+
+.small-uparrow{
+  width: 10%;
+  float: left;
+}
+
+.small-uparrow:after {
+  font-family: FontAwesome;
+  content: '\f062';
+  //font-size: 250px;
+}
+
+.small-downarrow{
+  width: 10%;
+  float: left;
+}
+
+.small-downarrow:after {
+  font-family: FontAwesome;
+  content: '\f063';
+  //font-size: 250px;
+}
+
+
+/*
+Big Shapes
+*/
+
+.square {
+  width: 200px;
+  height: 200px;
+  background: #FFF;
+  margin: 0 auto;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 200px solid #fff;
+  margin: 0 auto;
+}
+
+.star:after {
+  content: "Star";
+}
+
+.diamond{
+  width: 0;
+  height: 0;
+  border: 150px solid transparent;
+  border-bottom-color: #fff;
+  position: relative;
+  top: -150px;
+  margin: 0 auto;
+}
+
+.diamond:after {
+  content: '';
+  position: absolute;
+  left: -150px;
+  top: 150px;
+  width: 0;
+  height: 0;
+  border: 150px solid transparent;
+  border-top-color: #fff;
+  margin: 0 auto;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.rightuparrow {
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.rightuparrow:after {
+  font-family: FontAwesome;
+  content: '\f061';
+  font-size: 250px; 
+}
+
+.leftuparrow {
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.leftuparrow:after {
+  font-family: FontAwesome;
+  content: '\f060';
+  font-size: 250px; 
+}
+
+.rightdownarrow {
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.rightdownarrow:after {
+  font-family: FontAwesome;
+  content: '\f061';
+  font-size: 250px; 
+}
+
+.leftdownarrow {
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.leftdownarrow:after {
+  font-family: FontAwesome;
+  content: '\f060';
+  font-size: 250px; 
+}
+
+.rightarrow:after {
+  font-family: FontAwesome;
+  content: '\f061';
+  font-size: 250px;
+}
+
+.leftarrow:after {
+  font-family: FontAwesome;
+  content: '\f060';
+  font-size: 250px;
+}
+
+.uparrow:after {
+  font-family: FontAwesome;
+  content: '\f062';
+  font-size: 250px;
+}
+
+.downarrow:after {
+  font-family: FontAwesome;
+  content: '\f063';
+  font-size: 250px;
+}
+
+.smallshapes {
+  -ms-transform: scale(0.25,0.25);
+  -webkit-transform: scale(0.25,0.25);
+  transform: scale(0.25,0.25);
 }

@@ -10,6 +10,7 @@
 	<link href="css/foundation/css/foundation.min.css" rel="stylesheet">
 	<link href="css/foundation/css/normalize.css" rel="stylesheet">
 	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/shapes.css" rel="stylesheet">
 	<link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
 	<script src="css/foundation/js/vendor/fastclick.js"></script>
@@ -122,6 +123,7 @@
 				</select>
 			</div>
 		</div>
+
 		<div class="row setting-holder" style="padding-top: 10px; padding-bottom: 10px;">
 		</div>
 
@@ -134,51 +136,35 @@
 </script>
 
 <script id="starter-setting-tpl" type="text/x-handlebars-template">
-			{{#.}}
-				<div class="small-12 columns">
-					<div class="callout panel" style="background: rgba( 255,255,255,0.75 );">
+			<div class="small-12 columns">
+				<ul class="shape-list-header no-bullet">
+					<li>Saved Presets</li>
+				</ul>
+				<ul class="shape-list no-bullet" style="max-height: 80vh;">
+					{{#.}}
+					<li class="saved-preset" data-val = "{{this.id}}">
 						<div class="row collapse">
 							<div class="small-12 columns">
-								<p>Sequence Settings</p>
-								<hr />
+								{{this.preset_name}}
 							</div>
+						</div>
+						<div class="row collapse">
+							<div class="small-4 columns"><small>Total Time: {{this.preset_total_time}}</small></div>
+							<div class="small-4 columns"><small>Flash Time: {{this.preset_image_time}}</small></div>
+							<div class="small-4 columns"><small>Down Time: {{this.preset_down_time}}</small></div>
 						</div>
 						<div class="row collapse" style="padding-bottom: 10px;">
-							<div class="small-4 columns text-center">
-								<small>Total Time</small><br />
-								{{formatMinutes this.preset_total_time}}
-							</div>
-							<div class="small-4 columns text-center">
-								<small>Image Time</small><br />
-								{{formatMinutes this.preset_image_time}}
-							</div>
-							<div class="small-4 columns text-center">
-								<small>Down Time</small><br />
-								{{formatMinutes this.preset_down_time}}
-							</div>
+							<div class="small-6 columns"><small>Shapes</small></div>
+							<div class="small-6 columns"><small>Colors</small></div>
 						</div>
 						<div class="row collapse" style="padding-bottom: 10px;">
-							<div class="small-12 columns">
-								<p>Shapes</p>
-								<hr />
-							</div>
-							<div class="small-12 columns">
-								{{formatshapes this.preset_shapes}}
-							</div>
+							<div class="small-6 columns"><small>{{formatshapes this.preset_shapes}}</small></div>
+							<div class="small-6 columns"><small>{{this.preset_colors}}</small></div>
 						</div>
-						<div class="row collapse" style="padding-bottom: 10px;">
-							<div class="small-12 columns">
-								<p>Colors</p>
-								<hr />
-							</div>
-							<div class="small-12 columns">
-								{{this.preset_colors}}
-							</div>
-						</div>
-					</div>
-				</div>
-			{{/.}}
-
+					</li>
+					{{/.}}
+				</ul>
+			</div>
 	</section>
 </script>
 
@@ -232,21 +218,21 @@
 							{{#.}}
 							<li class="saved-preset" data-val = "{{this.id}}">
 								<div class="row collapse">
-									<div class="small-12 columns">
+									<div class="small-8 columns">
 										{{this.preset_name}}
 									</div>
-									<!-- <div class="small-4 columns text-right">
+									<div class="small-4 columns text-right">
 										Start <i class="fa fa-arrow-right"></i>
-									</div> -->
+									</div>
 								</div>
 								<div class="row collapse">
 									<div class="small-4 columns"><small>Total Time: {{this.preset_total_time}}</small></div>
 									<div class="small-4 columns"><small>Flash Time: {{this.preset_image_time}}</small></div>
 									<div class="small-4 columns"><small>Down Time: {{this.preset_down_time}}</small></div>
 								</div>
-								<div class="row collapse">
-									<div class="small-6 columns"><small>Shapes: {{formatshapes this.preset_shapes}}</small></div>
-									<div class="small-6 columns"><small>Colors: {{this.preset_colors}}</small></div>
+								<div class="row collapse" style="padding-bottom: 10px;">
+									<div class="small-6 columns"><small>{{formatshapes this.preset_shapes}}</small></div>
+									<div class="small-6 columns"><small>{{this.preset_colors}}</small></div>
 								</div>
 							</li>
 							{{/.}}
@@ -315,10 +301,10 @@
 							<li>Choose Shapes</li>
 						</ul>
 						<ul class="shape-list no-bullet">
-							<li class="shape-select" data-val="Square" data-select="false">Square</li>
-							<li class="shape-select" data-val="Triangle" data-select="false">Triange</li>
-							<li class="shape-select" data-val="Circle" data-select="false">Circle</li>
-							<li class="shape-select" data-val="Diamond" data-select="false">Diamond</li>
+							<li class="shape-select" data-val="square" data-select="false">Square</li>
+							<li class="shape-select" data-val="triangle" data-select="false">Triange</li>
+							<li class="shape-select" data-val="circle" data-select="false">Circle</li>
+							<li class="shape-select" data-val="diamond" data-select="false">Diamond</li>
 						</ul>
 					</div>
 				</div>
