@@ -516,12 +516,6 @@ var app = {
 
 		var result;
 
-		var arr = new Array("square", "triangle", "circle", "diamond");
-
-		if( arr.indexOf(str) >= 0 ){
-			return '<div class="'+str+" "+color+'"></div>';
-		}
-
 		return '<div class="'+str+" font-"+color+'"></div>';
 
 	},
@@ -555,7 +549,7 @@ var app = {
 
 		this.uniqueRandoms = [];
 		this.uniqueRandomColors = [];
-		
+
 		this.registerEvents();
 
 		this.slider = new PageSlider($("body"));

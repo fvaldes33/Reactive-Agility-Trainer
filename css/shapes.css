@@ -159,55 +159,47 @@ Big Shapes
 */
 
 .square {
-  width: 200px;
-  height: 200px;
-  background: #FFF;
-  margin: 0 auto;
+  
+}
+
+.square:after {
+  font-family: FontAwesome;
+  content: '\f0c8';
+  font-size: 250px; 
 }
 
 .triangle {
-  width: 0;
-  height: 0;
-  border-left: 100px solid transparent;
-  border-right: 100px solid transparent;
-  border-bottom: 200px solid #fff;
-  margin: 0 auto;
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
-.star:after {
-  content: "Star";
+.triangle:after {
+  font-family: FontAwesome;
+  content: '\f04b';
+  font-size: 250px; 
 }
 
-.diamond{
-  width: 0;
-  height: 0;
-  border: 150px solid transparent;
-  border-bottom-color: #fff;
-  position: relative;
-  top: -150px;
-  margin: 0 auto;
+.diamond {
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .diamond:after {
-  content: '';
-  position: absolute;
-  left: -150px;
-  top: 150px;
-  width: 0;
-  height: 0;
-  border: 150px solid transparent;
-  border-top-color: #fff;
-  margin: 0 auto;
+  font-family: FontAwesome;
+  content: '\f0c8';
+  font-size: 250px; 
 }
 
 .circle {
-  width: 200px;
-  height: 200px;
-  background: #fff;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  margin: 0 auto;
+  
+}
+
+.circle:after {
+  font-family: FontAwesome;
+  content: '\f111';
+  font-size: 250px; 
 }
 
 .rightuparrow {
@@ -306,28 +298,4 @@ Big Shapes
 .font-Green {
   color: green;
   border-color: green;
-}
-
-.Red {
-  color: red;
-  border-color: red;
-  background: red;
-}
-
-.Yellow {
-  color: yellow;
-  border-color: yellow;
-  background: yellow;
-}
-
-.Blue {
-  color: blue;
-  border-color: blue;
-  background: blue;
-}
-
-.Green {
-  color: green;
-  border-color: green;
-  background: green;
 }
