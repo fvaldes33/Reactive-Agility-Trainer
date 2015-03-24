@@ -37,7 +37,7 @@ var app = {
 					self.shape_count--;
 				}
 
-				console.log( self.addshapes );
+				//console.log( self.addshapes );
 
 			});
 
@@ -55,7 +55,7 @@ var app = {
 					self.addcolors.splice(self.color_del, 1);
 					self.color_count--;
 				}
-				console.log( self.addcolors );
+				//console.log( self.addcolors );
 			});
 
 			$('body').on('touchend', '.check-selection-1',function(e){
@@ -64,84 +64,83 @@ var app = {
 					//Arrays are empty - no bueno
 					app.showAlert("Please select shapes and colors before continuing", "Error");
 				} else {
-		      //Do something with the arrays and sent to time view
-		      var presets = JSON.parse(window.localStorage.getItem("presets"));
-		      var count = presets.length;
+			      	//Do something with the arrays and sent to time view
+			      	var presets = JSON.parse(window.localStorage.getItem("presets"));
+			      	var count = presets.length;
 
-		      var new_preset = {"id": count + 1,
-		                        "preset_name":"Temp",
-		                        "preset_shapes":self.addshapes,
-		                        "preset_colors":self.addcolors,
-		                        "preset_total_time":"0",
-		                        "preset_image_time":"0",
-		                        "preset_down_time":"0"
-		                        };
+			      	var new_preset = {"id": count + 1,
+			                        "preset_name":"Temp",
+			                        "preset_shapes":self.addshapes,
+			                        "preset_colors":self.addcolors,
+			                        "preset_total_time":"0",
+			                        "preset_image_time":"0",
+			                        "preset_down_time":"0"
+			                        };
 
-		      $('.shape-select').each(function(){ $( this ).attr('data-select', "false"); });
-		      $('.color-select').each(function(){ $( this ).attr('data-select', "false"); });
+			      	$('.shape-select').each(function(){ $( this ).attr('data-select', "false"); });
+			      	$('.color-select').each(function(){ $( this ).attr('data-select', "false"); });
 
 					self.shape_count = 0;
 					self.color_count = 0;
 					self.addshapes = [];
 					self.addcolors = [];
 
-		      self.store.createTempPreset( new_preset, function(answer){
-		        if( answer ){
-		          self.el = '';
-		          location.hash = "#CST";
-		        } else {
-		          app.showAlert("Error creating new preset", "Sorry!");
-		        }
-		      });
-
+				    self.store.createTempPreset( new_preset, function(answer){
+			        	if( answer ){
+			          		self.el = '';
+			          		location.hash = "#CST";
+			        	} else {
+			          		app.showAlert("Error creating new preset", "Sorry!");
+			        	}
+			      	});
 				}
 			});
 
 			$('body').on('touchstart', '.changetime', function(e){
 
-	      var action = $( this ).attr('data-action');
-	      var inc = $( this ).attr('data-inc');
-	      var sendto = $( this ).attr('data-send');
+		      var action = $( this ).attr('data-action');
+		      var inc = $( this ).attr('data-inc');
+		      var sendto = $( this ).attr('data-send');
 
-	      if( action == "add" ){
-	        self.mousedown = true;
-	        self.increment('add', sendto, inc);
-	      }else{
-	        self.mousedown = true;
-	        self.increment('sub', sendto, inc);
-	      }
+		      if( action == "add" ){
+		        self.mousedown = true;
+		        self.increment('add', sendto, inc);
+		      }else{
+		        self.mousedown = true;
+		        self.increment('sub', sendto, inc);
+		      }
 
-	    });
+		    });
 
-	    $('body').on('touchend', '.changetime', function(e){
+		    $('body').on('touchend', '.changetime', function(e){
 
-	      self.mousedown = false;
+		      self.mousedown = false;
 
-	    });
+		    });
 
 			$('body').on('touchend', '.complete-selection',function(e){
 
 				console.log( $('.complete-selection').html() );
 
 				var preset_name = $('#preset_name').val();
-	      var total_time = $('#total_time').val();
-	      var flash_time = $('#flash_time').val();
-	      var down_time = $('#down_time').val();
+			    var total_time = $('#total_time').val();
+			    var flash_time = $('#flash_time').val();
+			    var down_time = $('#down_time').val();
 
 				self.saveNewPreset(preset_name, total_time, flash_time, down_time, false);
 
-	    });
+	    	});
 
 			$('body').on('touchend', '.save-run-selection',function(e){
 
 				var preset_name = $('#preset_name').val();
-	      var total_time = $('#total_time').val();
-	      var flash_time = $('#flash_time').val();
-	      var down_time = $('#down_time').val();
+	      		var total_time = $('#total_time').val();
+	      		var flash_time = $('#flash_time').val();
+	      		var down_time = $('#down_time').val();
 
 				self.saveNewPreset(preset_name, total_time, flash_time, down_time, true);
 
-	    });
+	    	});
 
 			$(window).on('hashchange', $.proxy(this.route, this));
 
@@ -157,7 +156,6 @@ var app = {
 			});
 
 			$('body').on('mouseup', '.shape-select', function(e){
-				console.log(e);
 
 				if( $(e.target).attr('data-select') == "false" ){
 					$( e.target ).addClass("selected");
@@ -173,12 +171,11 @@ var app = {
 					self.shape_count--;
 				}
 
-				console.log( self.addshapes );
+				//console.log( self.addshapes );
 
 			});
 
 			$('body').on('mouseup', '.color-select',function(e){
-				console.log(e);
 
 				if( $(e.target).attr('data-select') == "false" ){
 					$( e.target ).addClass("selected");
@@ -193,20 +190,19 @@ var app = {
 					self.addcolors.splice(self.color_del, 1);
 					self.color_count--;
 				}
-				console.log( self.addcolors );
+				//console.log( self.addcolors );
 			});
 
 			$('body').on('mouseup', '.check-selection-1',function(e){
-				console.log(e);
 				if( self.addshapes.length == 0 || self.addcolors.length == 0 ){
 					//Arrays are empty - no bueno
 					app.showAlert("Please select shapes and colors before continuing", "Error");
 				} else {
-		      //Do something with the arrays and sent to time view
-		      var presets = JSON.parse(window.localStorage.getItem("presets"));
-		      var count = presets.length;
+		      		//Do something with the arrays and sent to time view
+		      		var presets = JSON.parse(window.localStorage.getItem("presets"));
+		      		var count = presets.length;
 
-		      var new_preset = {"id": count + 1,
+		      		var new_preset = {"id": count + 1,
 		                        "preset_name":"Temp",
 		                        "preset_shapes":self.addshapes,
 		                        "preset_colors":self.addcolors,
@@ -215,73 +211,69 @@ var app = {
 		                        "preset_down_time":"0"
 		                        };
 
-		      $('.shape-select').each(function(){ $( this ).attr('data-select', "false"); });
-		      $('.color-select').each(function(){ $( this ).attr('data-select', "false"); });
+		      		$('.shape-select').each(function(){ $( this ).attr('data-select', "false"); });
+		      		$('.color-select').each(function(){ $( this ).attr('data-select', "false"); });
 
 					self.shape_count = 0;
 					self.color_count = 0;
 					self.addshapes = [];
 					self.addcolors = [];
 
-		      self.store.createTempPreset( new_preset, function(answer){
-		        if( answer ){
-		          self.el = '';
-		          location.hash = "#CST";
-		        } else {
-		          app.showAlert("Error creating new preset", "Sorry!");
-		        }
-		      });
-
+		      		self.store.createTempPreset( new_preset, function(answer){
+		        		if( answer ){
+		          			self.el = '';
+		          			location.hash = "#CST";
+		        		} else {
+		          			app.showAlert("Error creating new preset", "Sorry!");
+		        		}
+		      		});
 				}
 			});
 
 			$('body').on('mousedown', '.changetime', function(e){
 
-				console.log("Changing time");
+	      		var action = $( this ).attr('data-action');
+	      		var inc = $( this ).attr('data-inc');
+	      		var sendto = $( this ).attr('data-send');
 
-	      var action = $( this ).attr('data-action');
-	      var inc = $( this ).attr('data-inc');
-	      var sendto = $( this ).attr('data-send');
+	      		if( action == "add" ){
+	        		self.mousedown = true;
+	        		self.increment('add', sendto, inc);
+	      		}else{
+	        		self.mousedown = true;
+	        		self.increment('sub', sendto, inc);
+	      		}
+	    	});
 
-	      if( action == "add" ){
-	        self.mousedown = true;
-	        self.increment('add', sendto, inc);
-	      }else{
-	        self.mousedown = true;
-	        self.increment('sub', sendto, inc);
-	      }
+		    $('body').on('mouseup', '.changetime', function(e){
 
-	    });
+		      self.mousedown = false;
 
-	    $('body').on('mouseup', '.changetime', function(e){
-
-	      self.mousedown = false;
-
-	    });
+		    });
 
 			$('body').on('mouseup', '.complete-selection',function(e){
 
 				console.log( $('.complete-selection').html() );
 
 				var preset_name = $('#preset_name').val();
-	      var total_time = $('#total_time').val();
-	      var flash_time = $('#flash_time').val();
-	      var down_time = $('#down_time').val();
+	      		var total_time = $('#total_time').val();
+	      		var flash_time = $('#flash_time').val();
+	      		var down_time = $('#down_time').val();
 
 				self.saveNewPreset(preset_name, total_time, flash_time, down_time, false);
 
-	    });
+	    	});
 
 			$('body').on('mouseup', '.save-run-selection',function(e){
 
 				var preset_name = $('#preset_name').val();
-	      var total_time = $('#total_time').val();
-	      var flash_time = $('#flash_time').val();
-	      var down_time = $('#down_time').val();
+	      		var total_time = $('#total_time').val();
+	      		var flash_time = $('#flash_time').val();
+	      		var down_time = $('#down_time').val();
 
 				self.saveNewPreset(preset_name, total_time, flash_time, down_time, true);
 
-	    });
+	    	});
 
 			$(window).on('hashchange', $.proxy(this.route, this));
 		}
@@ -443,28 +435,32 @@ var app = {
 		this.d_max = seq.preset_image_time;
 		this.t = null;
 		this.n = 0;
+		this.c = 0;
 		this.rest = false;
+		
 		this.shapes = seq.preset_shapes;
+		this.colors = seq.preset_colors;
 
 	    this.t = setInterval(function(){
 	        if( self.s >= self.s_max ){
 	           self.stopcountdown( self.t, 'sequence');
 	        } else {
 	            self.s = self.s + 0.10;
-							self.s = Math.round(self.s * 100) / 100;
+				self.s = Math.round(self.s * 100) / 100;
 
 	            // $('.show').html( self.s );
 
 	            if(!self.rest) {
-								self.i = self.i + 0.10;
-								self.i = Math.round(self.i * 100) / 100;
+					self.i = self.i + 0.10;
+					self.i = Math.round(self.i * 100) / 100;
 
 	                if( self.i < self.i_max ){
-	                    $('#counter').html(self.shapeme(self.shapes[self.n]));
+	                    $('#counter').html(self.shapeme(self.shapes[self.n], self.colors[self.c] ));
 	                } else if( self.i == self.i_max){
 	                    $('#counter').html("");
 						// self.n = Math.floor((Math.random() * self.shapes.length));
 						self.n = self.makeUniqueRandom(self.shapes.length);
+						self.c = self.makeUniqueRandom(self.colors.length);
 						self.i = 0;
 						self.rest = true;
 	                }
@@ -498,69 +494,17 @@ var app = {
 
 	},
 
-	shapeme: function(str) {
+	shapeme: function(str, color) {
 
 		var result;
-		return '<div class="'+str+'"></div>';
 
-		// switch(str){
-		// 	case "Square":
-		// 		//result = '<i class="fa fa-square seq-shape"></i>';
-		// 		result = '<div class="square"></div>';
-		// 		break;
-		// 	case "Triangle":
-		// 		result = '<div class="triangle"></div>';
-		// 		//result = '<i class="fa fa-exclamation-triangle seq-shape"></i>';
-		// 		break;
-		// 	case "Circle":
-		// 		//result = '<i class="fa fa-circle seq-shape"></i>';
-		// 		result = '<div class="circle"></div>';
-		// 		break;
-		// 	case "Star":
-		// 		result = '<i class="fa fa-star seq-shape"></i>';
-		// 		break;
-		// 	case "Diamond":
-		// 		result = '<div class="diamond"></div>';
-		// 		//result = '<i class="fa fa-star seq-shape"></i>';
-		// 		break;
-		// 	case "rightarrow":
-		// 		result = '<div class="rightarrow"></div>';
-		// 		//result = '<i class="fa fa-star seq-shape"></i>';
-		// 		break;
-		// 	case "leftarrow":
-		// 		result = '<div class="leftarrow"></div>';
-		// 		//result = '<i class="fa fa-star seq-shape"></i>';
-		// 		break;
-		// 	case "downarrow":
-		// 		result = '<div class="downarrow"></div>';
-		// 		//result = '<i class="fa fa-star seq-shape"></i>';
-		// 		break;
-		// 	case "uparrow":
-		// 		result = '<div class="uparrow"></div>';
-		// 		//result = '<i class="fa fa-star seq-shape"></i>';
-		// 		break;
-		// 	case "rightuparrow":
-		// 		result = '<div class="rightuparrow"></div>';
-		// 		//result = '<i class="fa fa-star seq-shape"></i>';
-		// 		break;
-		// 	case "leftuparrow":
-		// 		result = '<div class="leftuparrow"></div>';
-		// 		//result = '<i class="fa fa-star seq-shape"></i>';
-		// 		break;
-		// 	case "rightdownarrow":
-		// 		result = '<div class="rightdownarrow"></div>';
-		// 		//result = '<i class="fa fa-star seq-shape"></i>';
-		// 		break;
-		// 	case "leftdownarrow":
-		// 		result = '<div class="leftdownarrow"></div>';
-		// 		//result = '<i class="fa fa-star seq-shape"></i>';
-		// 		break;
-		// 	// default:
-		// 	// 	result = str;
+		var arr = new Array("square", "triangle", "circle", "diamond");
 
-		// }
+		if( arr.indexOf(str) >= 0 ){
+			return '<div class="'+str+" "+color+'"></div>';
+		}
 
-		// return result;
+		return '<div class="'+str+" font-"+color+'"></div>';
 
 	},
 
@@ -609,13 +553,6 @@ app.initialize();
 
 $(function(){
 
-	// var menuShow = false;
-	// $('.right-menu').on('click', function(e){
-	// 	e.preventDefault();
-	// 	console.log(e);
-	// 	$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
-	// });
-
 });
 
 /*
@@ -644,25 +581,6 @@ Handlebars.registerHelper("formatshapes", function(shapes, options) {
 	for( var i = 0; i < shapes.length; i++ ) {
 
 		d = d + '<div class="small-'+shapes[i]+'"></div>';
-
-		// switch(shapes[i]) {
-		// 	case "Square":
-		// 		d = d + '<i class="fa fa-square"></i>';
-		// 		//o = '<i class="fa fa-square"></i>';
-		// 		break;
-		// 	case "Circle":
-		// 		d = d + '<i class="fa fa-circle"></i>';
-		// 		//o = '<i class="fa fa-circle"></i>';
-		// 		break;
-		// 	case "Triangle":
-		// 		d = d + '<i class="fa fa-exclamation-triangle"></i>';
-		// 		//o = '<i class="fa fa-exclamation-triangle"></i>';
-		// 		break;
-		// 	case "Star":
-		// 		d = d + '<i class="fa fa-star"></i>';
-		// 		//o = '<i class="fa fa-star"></i>';
-		// 		break;
-		// }
 
 	}
 

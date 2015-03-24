@@ -6,7 +6,7 @@ var SavedSeqView = function(store) {
 		var preset = $( this ).attr('data-val');
 		
 		store.setPreset( preset , function(settings) {
-			console.log( preset );
+			//console.log( preset );
 			location.hash = "#SEQ";
 		});
 
@@ -20,7 +20,7 @@ var SavedSeqView = function(store) {
 		this.inner.html(SavedSeqView.toptemplate());
 
 	    store.getPresets(function(presets){
-			console.log(presets);
+			//console.log(presets);
 			self.inner.append( SavedSeqView.sectiontemplate(presets) );
 		});
 

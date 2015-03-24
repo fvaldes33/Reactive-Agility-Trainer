@@ -151,7 +151,7 @@
 						<div class="row collapse">
 							<div class="small-4 columns"><small>Total Time: {{this.preset_total_time}}</small></div>
 							<div class="small-4 columns"><small>Flash Time: {{this.preset_image_time}}</small></div>
-							<div class="small-4 columns"><small>Down Time: {{this.preset_down_time}}</small></div>
+							<div class="small-4 columns"><small>Rec. Time: {{this.preset_down_time}}</small></div>
 						</div>
 						<div class="row collapse" style="padding-bottom: 10px;">
 							<div class="small-6 columns"><small>Shapes</small></div>
@@ -228,7 +228,7 @@
 								<div class="row collapse">
 									<div class="small-4 columns"><small>Total Time: {{this.preset_total_time}}</small></div>
 									<div class="small-4 columns"><small>Flash Time: {{this.preset_image_time}}</small></div>
-									<div class="small-4 columns"><small>Down Time: {{this.preset_down_time}}</small></div>
+									<div class="small-4 columns"><small>Rec. Time: {{this.preset_down_time}}</small></div>
 								</div>
 								<div class="row collapse" style="padding-bottom: 10px;">
 									<div class="small-6 columns"><small>{{formatshapes this.preset_shapes}}</small></div>
@@ -384,7 +384,7 @@
 						</ul>
 						<ul class="shape-list no-bullet">
 							<li style="margin: 0px; padding: 0px;">
-								<div class="row">
+								<div class="row collapse">
 									<div class="small-12 columns">
 										<input type="text" id="preset_name" placeholder="Preset Name" />
 									</div>
@@ -397,11 +397,11 @@
 				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-12 columns">
 						<ul class="shape-list-header no-bullet">
-							<li>Choose Total Time</li>
+							<li>Choose Total Time (seconds) </li>
 						</ul>
 						<ul class="shape-list no-bullet">
 							<li>
-								<div class="row">
+								<div class="row collapse">
 									<div class="small-8 small-centered columns">
 										<div class="row collapse">
 											<div class="small-3 columns">
@@ -428,7 +428,7 @@
 						</ul>
 						<ul class="shape-list no-bullet">
 							<li>
-								<div class="row">
+								<div class="row collapse">
 									<div class="small-8 small-centered columns">
 										<div class="row collapse">
 											<div class="small-3 columns">
@@ -451,11 +451,11 @@
 				<div class="row" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-12 columns">
 						<ul class="shape-list-header no-bullet">
-							<li>Choose Down Time</li>
+							<li>Choose Recovery Time</li>
 						</ul>
 						<ul class="shape-list no-bullet">
 							<li>
-								<div class="row">
+								<div class="row collapse">
 									<div class="small-8 small-centered columns">
 										<div class="row collapse">
 											<div class="small-3 columns">

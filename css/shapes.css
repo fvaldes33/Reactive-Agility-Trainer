@@ -287,3 +287,47 @@ Big Shapes
   -webkit-transform: scale(0.25,0.25);
   transform: scale(0.25,0.25);
 }
+
+.font-Red {
+  color: red;
+  border-color: red;
+}
+
+.font-Yellow {
+  color: yellow;
+  border-color: yellow;
+}
+
+.font-Blue {
+  color: blue;
+  border-color: blue;
+}
+
+.font-Green {
+  color: green;
+  border-color: green;
+}
+
+.Red {
+  color: red;
+  border-color: red;
+  background: red;
+}
+
+.Yellow {
+  color: yellow;
+  border-color: yellow;
+  background: yellow;
+}
+
+.Blue {
+  color: blue;
+  border-color: blue;
+  background: blue;
+}
+
+.Green {
+  color: green;
+  border-color: green;
+  background: green;
+}

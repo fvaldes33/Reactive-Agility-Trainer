@@ -4,7 +4,7 @@ var StarterView = function(store) {
 		var self = this;
 
 		store.fillSettings( $('#sequence_chosen').val() , function(settings) {
-			console.log( $('#sequence_chosen').val() );
+			//console.log( $('#sequence_chosen').val() );
 			$('.setting-holder').html( StarterView.settingstemplate(settings) );
 		});
 
@@ -17,7 +17,7 @@ var StarterView = function(store) {
 		this.inner.html(StarterView.toptemplate());
 
 		store.getPresets(function(presets){
-			console.log(presets);
+			//console.log(presets);
 			self.inner.append( StarterView.sectiontemplate(presets) );
 		});
 
