@@ -460,7 +460,7 @@ var app = {
 	                    $('#counter').html("");
 						// self.n = Math.floor((Math.random() * self.shapes.length));
 						self.n = self.makeUniqueRandom(self.shapes.length);
-						self.c = self.makeUniqueRandom(self.colors.length);
+						self.c = self.makeUniqueRandomColors(self.colors.length);
 						self.i = 0;
 						self.rest = true;
 	                }
@@ -480,21 +480,39 @@ var app = {
 
 	makeUniqueRandom: function(numRandoms){
 		if (!this.uniqueRandoms.length) {
-        for (var i = 0; i < numRandoms; i++) {
-            this.uniqueRandoms.push(i);
-        }
-    }
-    var index = Math.floor(Math.random() * this.uniqueRandoms.length);
-    var val = this.uniqueRandoms[index];
+	        for (var i = 0; i < numRandoms; i++) {
+	            this.uniqueRandoms.push(i);
+	        }
+    	}
+    	var index = Math.floor(Math.random() * this.uniqueRandoms.length);
+    	var val = this.uniqueRandoms[index];
 
-    // now remove that value from the array
-    this.uniqueRandoms.splice(index, 1);
+    	// now remove that value from the array
+    	this.uniqueRandoms.splice(index, 1);
 
-    return val;
+    	return val;
+
+	},
+
+	makeUniqueRandomColors: function(numRandoms){
+		if (!this.uniqueRandomColors.length) {
+	        for (var i = 0; i < numRandoms; i++) {
+	            this.uniqueRandomColors.push(i);
+	        }
+    	}
+    	var index = Math.floor(Math.random() * this.uniqueRandomColors.length);
+    	var val = this.uniqueRandomColors[index];
+
+    	// now remove that value from the array
+    	this.uniqueRandomColors.splice(index, 1);
+
+    	return val;
 
 	},
 
 	shapeme: function(str, color) {
+
+		console.log("Shape Me: " + str + " " + color);
 
 		var result;
 
@@ -536,7 +554,8 @@ var app = {
 		this.mousedown = false;
 
 		this.uniqueRandoms = [];
-
+		this.uniqueRandomColors = [];
+		
 		this.registerEvents();
 
 		this.slider = new PageSlider($("body"));
