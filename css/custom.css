@@ -206,13 +206,15 @@ body {
 }
 
 .shape-list-box > div {
-	height: 50px;
+	height: 75px;
 	border: 2px solid #FF0000;
 	margin-top: 10px;
+
 }
 
 .shape-list-box > div > i {
-	margin-top: 15px;
+	margin-top: 25px;
+	pointer-events: none;
 }
 
 .shape-list-box > div.selected {
