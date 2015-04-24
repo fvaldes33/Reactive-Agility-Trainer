@@ -49,7 +49,7 @@
 </script>
 
 <script id="home-section-tpl" type="text/x-handlebars-template">
-			<section class="main-section"> <!-- content goes here -->
+			<section id="home" class="main-section"> <!-- content goes here -->
 
 				<div class="row first" style="padding-top: 10px; padding-bottom: 10px;">
 					<div class="small-6 columns text-center">
@@ -217,12 +217,15 @@
 						</ul>
 						<ul class="shape-list no-bullet" style="max-height: 80vh;">
 							{{#.}}
-							<li class="saved-preset" data-val = "{{this.id}}">
+							<li class="" >
 								<div class="row collapse">
-									<div class="small-8 columns">
+									<div class="small-6 columns">
 										{{this.preset_name}}
 									</div>
-									<div class="small-4 columns text-right">
+									<div class="small-3 columns text-center delete-preset" data-val = "{{this.id}}">
+										Delete <i class="fa fa-close"></i>
+									</div>
+									<div class="small-3 columns text-center saved-preset" data-val = "{{this.id}}">
 										Start <i class="fa fa-arrow-right"></i>
 									</div>
 								</div>

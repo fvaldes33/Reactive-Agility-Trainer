@@ -30,6 +30,19 @@ var LocalStorageStore = function(successCallback, errorCallback) {
 		callLater(callback, results);
 	}
 
+	this.deletePreset = function(id, callback){
+		var presets = JSON.parse(window.localStorage.getItem("presets"));
+		for (var i = 0; i < presets.length; i++) {
+            var _item = presets[i];
+            if( _item['id'] == id ){
+            	presets.splice(i, 1);
+            }
+        }
+        window.localStorage.setItem("presets", JSON.stringify(presets));
+        callLater(callback, true);
+
+	}
+
 	this.createTempPreset = function(preset, callback){
 		window.localStorage.setItem('temp_preset', JSON.stringify(preset));
 		callLater(callback, true);

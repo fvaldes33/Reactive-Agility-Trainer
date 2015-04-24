@@ -19,6 +19,8 @@
 	<gap:platform name="android" />
 	<gap:platform name="winphone" />
 
+	<icon src="icon.png" />
+	
 	<preference name="fullscreen" value="true" />
 
 	<preference name="DisallowOverscroll" value="true" />

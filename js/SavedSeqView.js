@@ -12,13 +12,27 @@ var SavedSeqView = function(store) {
 
 	};
 
+	this.deletePreset = function(){
+		var self = this;
+		var del = $( this ).parent().parent();
+
+		var preset = $( this ).attr('data-val');
+
+		store.deletePreset( preset , function(answer){
+			if( answer ){
+				//delete from screen
+				del.remove();
+			}
+		});
+	};
+
 	this.renderPage = function(){
 
 	    var self = this;
 
 		this.el.append( this.inner );
 		this.inner.html(SavedSeqView.toptemplate());
-
+		
 	    store.getPresets(function(presets){
 			//console.log(presets);
 			self.inner.append( SavedSeqView.sectiontemplate(presets) );
@@ -35,6 +49,7 @@ var SavedSeqView = function(store) {
 		this.section = $('<section class="main-section" />');
 
 		this.inner.on('click', '.saved-preset', this.setPreset);
+		this.inner.on('click', '.delete-preset', this.deletePreset);
   	
   	};
 
